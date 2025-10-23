@@ -1,0 +1,1 @@
+python 1022_7_bmi.py
