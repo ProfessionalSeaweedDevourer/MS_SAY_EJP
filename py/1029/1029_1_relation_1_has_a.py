@@ -64,7 +64,7 @@ seoulmilk.printProdInfo()
 class Shoes(Product):
     def __init__(self, name, price, size):
         super().__init__(name, price)
-        self.size = size
+        self.size = size # 사실 size = None으로 미개하게 만들어도 상관없다.
 
     def printProdInfo(self):
         super().printProdInfo()
@@ -72,3 +72,37 @@ class Shoes(Product):
 
 jordan123 = Shoes("조던123", 150000, 270)
 jordan123.printProdInfo()
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+# 실습: 데스크탑
+
+class Desktop(Product):
+    def __init__(self, name, price, cpu, ram, disk):
+        super().__init__(name, price)
+        self.cpu = cpu
+        self.ram = ram
+        self.disk = disk
+
+    def printProdInfo(self):
+        super().printProdInfo()
+        print(self.cpu, self.ram, self.disk)
+
+ms123 = Desktop("매직스테이션123", 2000000, "i7-1234", 32, 500)
+ms123.printProdInfo()
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+# 실습: 상속의 상속
+
+class Laptop(Desktop):
+    def __init__(self, name, price, cpu, ram, disk, weight):
+        super().__init__(name, price, cpu, ram, disk)
+        self.weight = weight
+
+    def printProdInfo(self):
+        super().printProdInfo()
+        print(f"{self.weight}kg")
+
+gram123 = Laptop("그램123", 2500000, "i7-5678", 32, 1000, 3)
+gram123.printProdInfo()
