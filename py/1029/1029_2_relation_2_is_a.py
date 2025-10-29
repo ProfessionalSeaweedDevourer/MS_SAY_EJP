@@ -25,15 +25,17 @@ class Human:
 # --------------------------------------------------------------------------------------------------------------------------------------
 # 아이언맨은 '존재'한다.
 # 어벤저스는 '개념'이다. 분류는 근본적으로 추상적이다.
-class Ironman(Avenger, Human):
-    def __init__(self, name, age, agent):
-        super().__init__(name, age)
-        self.agent = agent
 
+class Ironman(Avenger, Human):
 # 아이언맨은 어벤저이자 인간이다. > '다중상속'이 발생한다.
 # 대부분 안 되는데 아무튼 python은 됨.
 
-    def printInfo(self):  # 다중 상속 상황에서 이름이 같은 게 '또' 나오면? > 먼저 상속받은 쪽이 적용.
+    def __init__(self, name, age, agent, address):
+        super().__init__(name, age) # Ironman의 super는 먼저 나온 Avenger로 지정되어 있다.
+        self.agent = agent
+        self.address = address # 이럴 거면 상속의 의미가...
+
+    def printInfo(self): 
         super().printAvengerInfo()
         print(self.agent)
 
