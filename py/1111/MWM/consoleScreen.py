@@ -2,6 +2,21 @@ from seller import Seller
 from product import Product 
 
 class ConsoleScreen:
+    
+    @staticmethod
+    def showMainMenu():
+        print("\n====================")
+        print("    메인 메뉴")
+        print("====================")
+        print("1) 판매자 등록")
+        print("2) 상품 등록")
+        print("...") # 임시 메뉴 항목
+        print("10) 종료")
+        print("--------------------")
+        
+        # 사용자 입력을 받아 문자열로 반환합니다.
+        return input("메뉴 선택: ")
+    
     @staticmethod
     def getInfo():
         print("--- 판매자 정보 입력 ---")

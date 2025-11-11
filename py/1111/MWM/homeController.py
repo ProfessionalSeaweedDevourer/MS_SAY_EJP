@@ -1,4 +1,4 @@
-from mwmDAO import MWMDAO # 개선된 DAO 파일명을 사용한다고 가정
+from mwmDAO import SellerDAO, ProductDAO
 from consoleScreen import ConsoleScreen
 
 if __name__ == "__main__":
