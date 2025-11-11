@@ -6,5 +6,5 @@ class Seller:
     def __init__(self, name, residence, birthdate, seller_no=None):
         self.seller_no = seller_no  # 판매자 일련번호 (SELLER_NO). 조회/수정/삭제 시 사용
         self.name = name            # SELLER_NAME (판매자 이름)
-        self.residence = residence       # RESIDENCE (거주지)
-        self.birthdate = birthdate # BIRTH_DATE (생년월일 - 'YYYYMMDD' 형식 문자열로 유지)
+        self.addr = residence       # RESIDENCE (거주지 - DAO에서 addr로 바인딩됨)
+        self.birth_date = birthdate # BIRTH_DATE (생년월일 - 'YYYYMMDD' 형식 문자열로 유지)
