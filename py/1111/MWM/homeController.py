@@ -1,4 +1,4 @@
-from mwmDAO import SellerDAO, ProductDAO
+from mwmDAO import MWMDAO
 from consoleScreen import ConsoleScreen
 
 if __name__ == "__main__":
