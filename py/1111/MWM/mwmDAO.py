@@ -3,6 +3,9 @@ import oracledb
 # from configManager import ConfigManager # 실제 프로젝트에서 연결 문자열을 관리할 때 사용
 
 class MWMDAO:
+    # 예시를 위해 DB 연결 문자열을 임시로 정의합니다.
+    # 실제 사용 시 configManager를 통해 가져오는 것이 좋습니다.
+    CONNECT_STRING = "ericjpark/0000@195.168.9.249:1521/xe"
 
     def reg(self, seller, product):
         con, cur = ejpDBManager.makeConCur()
@@ -18,14 +21,14 @@ class MWMDAO:
             sql_seller = """
                 BEGIN
                     INSERT INTO MWM_SELLER (SELLER_NO, SELLER_NAME, RESIDENCE, BIRTH_DATE)
-                    VALUES (MWM_SELLER_SEQ.NEXTVAL, :name, :residence, TO_DATE(:bdate, 'YYYYMMDD'))
+                    VALUES (MWM_SELLER_SEQ.NEXTVAL, :name, :addr, TO_DATE(:bdate, 'YYYYMMDD'))
                     RETURNING SELLER_NO INTO :output_no;
                 END;
             """
             cur.execute(sql_seller, 
                         name=seller.name, 
-                        residence=seller.residence, 
-                        bdate=seller.birthdate,
+                        addr=seller.addr, 
+                        bdate=seller.birth_date,
                         output_no=seller_no_var)
 
             # 3. 반환된 SELLER_NO 값을 Python 변수에 가져옵니다.
