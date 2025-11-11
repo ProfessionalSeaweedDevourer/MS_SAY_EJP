@@ -56,7 +56,7 @@ if data_list:
     cur = None
     
     try:
-        con = connect("ericjpark/0000@195.168.9.249:1521/xe")
+        con = connect("ericjpark/0000@195.168.9.71:1521/xe")
         cur = con.cursor()
 
         table_name = "SEOUL_AIR_QUALITY"

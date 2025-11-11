@@ -1,12 +1,13 @@
 # ejpDBManager.py
+# 서버 IP 주소 변경 시, 10번 line으로.
 
 import oracledb
 
 class ejpDBManager:
     @staticmethod
-    def makeConCur(connect_string):
+    def makeConCur():
         try:
-            con = oracledb.connect(connect_string)
+            con = oracledb.connect("ericjpark/0000@195.168.9.71:1521/xe")
             cur = con.cursor()
             return con, cur
         except oracledb.Error as e:
