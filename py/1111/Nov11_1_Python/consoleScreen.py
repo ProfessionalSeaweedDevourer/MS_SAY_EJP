@@ -12,7 +12,7 @@ class ConsoleScreen:
         print("...")
         print("10) 종료")
         print("-----")
-        return input("뭐 : ")
+        return input("메뉴 선택 : ")
     
     def showProducts(products):
         for product in products:
