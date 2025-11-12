@@ -35,3 +35,16 @@ if __name__ == "__main__": # 이 if문 뭐지 - import
             pageNo = ConsoleScreen.showSelectPageNoMenu(pageCount)
             sellers = sellerDAO.get(pageNo)
             ConsoleScreen.showSellers(sellers)
+        elif menu == "6": # 상품 조회
+            pageCount = sellerDAO.getPageCount()
+            pageNo = ConsoleScreen.showSelectPageNoMenu(pageCount) 
+            products = ProductDAO.get(pageNo)
+            ConsoleScreen.showProducts(products)
+        elif menu == "7": # 판매자 검색
+            searchTxt = ConsoleScreen.showSearchMenu()
+            pageCount = sellerDAO.getPageCount(searchTxt)
+            pass
+        elif menu == "8": # 상품 검색
+            pass
+        elif menu == "9":
+            pass

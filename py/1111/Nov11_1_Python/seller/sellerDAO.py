@@ -66,7 +66,12 @@ class SellerDAO:
         finally:
             KwonDBManager.closeConCur(con, cur)
 
-    def getPageCount(self):
+    def getPageCount(self, searchTxt): # 입력 내용에 따라, '검색'할지 '조회'할지를 선택할 수 있도록 개선
+        if searchTxt == "":
+            sellerCount = self.allSellerCount
+        else:
+            sellerCount = # 검색으로 얻은 실제 판매자 수로 설정.
+            pass
         return ceil(self.allSellerCount / self.sellerPerPage)
 
     def reg(self, seller):
