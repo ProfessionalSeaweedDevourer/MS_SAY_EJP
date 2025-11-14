@@ -11,7 +11,7 @@ def main():
     app_controller = HomeController()
     
     # 4. 컨트롤러의 메인 메서드 실행 (프로그램의 주 실행 루프 시작)
-    app_controller.run() 
+    app_controller.run()
 
 # 5. 프로그램의 시작점 지정
 if __name__ == "__main__":

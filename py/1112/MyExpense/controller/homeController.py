@@ -3,13 +3,11 @@
 from view.consoleScreen import ConsoleScreen
 from model.expDao import ExpDAO
 from model.catDao import CatDAO
-from model.category import Category # Category VO/DTO 직접 임포트 (수정 작업에 필요)
-from model.expense import Expense # Expense VO/DTO 직접 임포트 (수정 작업에 필요)
 
 class HomeController:
     """
     프로그램의 주 실행 흐름을 제어하는 Controller 클래스.
-    View와 DAO 사이의 중재자 역할을 합니다.
+    View와 DAO 사이의 중재자 역할.
     """
     def __init__(self):
         self._screen = ConsoleScreen()
@@ -18,26 +16,26 @@ class HomeController:
 
     def run(self):
         """
-        프로그램의 메인 루프를 시작합니다. (메뉴 구조 최종 반영)
+        프로그램의 메인 루프.
         """
         while True:
             menu_choice = self._screen.showMainMenu()
 
-            if menu_choice == '1':
+            if menu_choice == '1': # 소비 내역 등록
                 self.registerExpense()
-            elif menu_choice == '2':
+            elif menu_choice == '2': # 소비 내역 조회
                 self.showAllExpenses()
-            elif menu_choice == '3':
+            elif menu_choice == '3': # 소비 내역 수정 / 삭제
                 self.manageExpenseCRUD() 
-            elif menu_choice == '4':
+            elif menu_choice == '4': # 분류 조회 / 등록
                 self.manageCategories()  
-            elif menu_choice == '5':
+            elif menu_choice == '5': # 분류 수정 / 삭제
                 self.manageCategoryCRUD() 
-            elif menu_choice == '0':
+            elif menu_choice == '0': # 종료 코드
                 self._screen.showResult("프로그램을 종료합니다.")
                 break
             elif menu_choice == '9':
-                self._screen.showResult("버전: 1.0\n개발자: Gemini AI\n최종 업데이트: 2025-11")
+                self._screen.showResult("버전: 1.0\n최종 업데이트: 2025-11-12")
             else:
                 self._screen.showResult("잘못된 메뉴 선택입니다.")
 

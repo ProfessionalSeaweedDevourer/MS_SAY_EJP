@@ -7,7 +7,7 @@ class ejpDBManager:
     @staticmethod
     def makeConCur():
         try:
-            con = oracledb.connect("ericjpark/0000@195.168.9.71:1521/xe")
+            con = oracledb.connect("ericjpark/0000@195.168.9.106:1521/xe")
             cur = con.cursor()
             return con, cur
         except oracledb.Error as e:
