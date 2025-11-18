@@ -1,0 +1,12 @@
+.aMenu {
+    width: 200px;
+    box-shadow: 3px 3px 3px black;
+    margin: 10px;
+
+    float: left; /* 가로로 격자형 배치 */
+
+}
+
+.aMenu img {
+    width: 180px;
+}

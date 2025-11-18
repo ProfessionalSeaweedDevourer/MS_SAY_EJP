@@ -1,0 +1,26 @@
+body{
+    background-color: #ede9d0;
+}
+div{
+    /* 색, 두께, 선 종류
+    선 종류: solid, dotted, dashed, double, groove, ridge, inset, outset, none, hidden */
+    border: #ff8695 5px double;
+    width: 300px;
+    height: 200px;
+    margin-left: 30px;
+    padding: 20px;
+    position: fixed;
+    left: 50px;
+    top: 100px;
+    z-index: 10;
+}
+h1{
+    width: 180px;
+    height: 70px;
+    background-color: #ffbdcb;
+    position: fixed;
+    left: 30px;
+    top: 30px;
+    font: 30px NanumBarunpenOTF;
+    z-index: 1;
+}

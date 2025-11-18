@@ -1,0 +1,1 @@
+python p02_navernews.py

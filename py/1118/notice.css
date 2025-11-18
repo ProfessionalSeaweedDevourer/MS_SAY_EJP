@@ -1,0 +1,31 @@
+/* 근데 메뉴를 공용으로 쓴 다는 게, 수정할 때는 지옥 아닌가? */
+
+#noticeBBS{
+    width: 400px;
+
+    /* 제목 줄 */
+    background-color: bisque;
+    color: rgb(90, 69, 30);
+
+    /* td 간 간격 임의 조정 */
+    border-spacing: 1px 1px; /* 가로 세로 간격 */
+
+}
+
+#noticeBBS .dataTr{
+    /* 내용 줄 */
+    background-color: aliceblue;
+    color: black;
+    cursor: pointer; /* 마우스 올렸을 때 손가락 모양으로 변경 */
+}
+
+#noticeBBS .dataTr:hover{
+    /* 마우스 올렸을 때 */
+    background-color: #ffefc1;
+    color: black;
+}
+
+/* border 설정은 td에서 해야 한다. tr에서는 안 먹힘 */
+#noticeBBS td{
+    border-bottom: rgba(255, 0, 0, 0.519) solid 1px;
+}

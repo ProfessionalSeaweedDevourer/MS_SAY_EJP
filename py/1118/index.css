@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "magic";
+    src: url("Magic.ttf");
+    /* 웹 폰트 기능은 css3 부터 지원: ie에서 사용 불가.
+        또한, 폰트 파일은 용량이 크기 때문에 서버가 느리면 로딩 속도가 느려질 수 있음 */
+
+}
+
+body {
+    /* 여백 제거 */
+    margin: 0px;
+    padding: 0px;
+}
+
+#siteTitleArea { /* position fixed를 활용해, 스크롤 내려도 항상 상단에 보이도록 설정 */
+    position: fixed;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+#siteTitle {
+    font-family: "magic";
+    width: 1200px; /* 접속하는 사용자 모니터에 따라 적절한 값 사용? */
+     font-size: 30pt;
+    height: 75px;
+    text-shadow: 2px 2px 2px rgba(238, 138, 231, 0.893);
+    margin: 0 auto;
+    font-weight: 900; /* 굵게 */
+}
+
+#siteMenuArea {
+    background-color: #f0f0f0;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+#siteMenu{
+    width: 1200px;
+    height: 60px;
+}
+
+#siteMenu a{
+    /*
+    Transition 속성: 속성명 지속시간 속도조절
+    ease in: 천천히 시작해서 빨라짐
+    linear: 일정한 속도
+    ease out: 빨리 시작해서 천천히 끝남
+    ease in out: 천천히 시작해서 중간에 빨라졌다가 천천히 끝남
+    */
+    transition: all 0.5s ease-in; /* 모든 속성이 서서히 변함 */
+    text-decoration: none; /* 밑줄 제거 */
+    color:rgba(96, 189, 158, 0.795);
+    margin-left: 30px;
+    font-family: "magic";
+}
+
+#siteMenu a:hover{ /* 마우스 올렸을 때 */
+    color: #ff6f91;
+    text-shadow: 0px 0px 5px rgba(255, 111, 145, 0.795);
+}
+
+#siteContentArea { 
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 150px; /* 상단 고정 메뉴 공간 확보 */
+    /* 여기까지 해도, 스크롤하면 겹치게 됨. 타이틀 자체에 배경색 부여해서 해결 */
+}
+
+/* 스크롤 없애기 */
+::-webkit-scrollbar {
+    /* chrome / edge / safari 에서만 적용 */
+    display: none;
+}
