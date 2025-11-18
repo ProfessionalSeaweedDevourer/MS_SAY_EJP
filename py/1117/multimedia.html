@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>멀티미디어 활용 테스트</title>
+    </head>
+    <body>
+        이미지 삽입 테스트<br>
+        <!-- img src = "경로"로 시작해요 -->
+        <!-- 경로에 대해 -->
+            <!-- 1. 절대 경로: 대상 파일의 전체 경로 -->
+            <!-- 2. 상대 경로: 현재 파일 기준으로 볼 때의 대상 파일 위치 -->
+        <!-- 외부 웹 경로 사용 가능 -->
+        <img src="https://www.python.org/static/community_logos/python-logo-master-v3-TM.png" alt="파이썬 로고" width="300"><br>
+        
+        
+        <!-- 로컬 파일 -->
+        <!-- 같은 폴더에 있는 파일 -->
+        <img src="meow.webp" alt="meow" width="50%"><br>
+
+        <!-- 하위 폴더에 있는 파일 -->
+        <img src = "testimage/popcat.gif" alt="pop" width="250"><br>
+        <!-- px는 따로 적지 않아도 기본 단위로 쳐줘요 -->
+
+        <!-- 상위 폴더에 있는 파일: cd .. 과 같은 원리 -->
+        <!-- width와 height 둘 중 하나만 조절하면 나머지는 맞춰 줘요 -->
+        <img src = "../../misc/OIIA-Website-loop.gif" alt="oiia" width="250px"><br>
+
+        <hr>
+        오디오 삽입 테스트<br>
+        <!-- audio 태그로 오디오 삽입 가능 -->
+        <audio controls>
+            <source src="../../misc/ため息の行方.mp3" type="audio/mp3">
+        </audio>
+        <hr>
+        
+        비디오 삽입 테스트<br>
+        <!-- video 태그로 비디오 삽입 가능 -->
+        <video width="480" controls>
+            <source src="../../misc/Why do 90% of all medicines sound like wizard names.mp4" type="video/mp4">
+        </video>
+        <hr>
+
+        pdf 삽입 테스트<br>
+        <!-- iframe 태그로 pdf 삽입 가능 -->
+        <iframe src="../../misc/loremipsum.pdf" width="600" height="500"></iframe>
+
+
+    </body>
+</html>
