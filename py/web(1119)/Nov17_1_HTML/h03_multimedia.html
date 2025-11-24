@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>1117</title>
+</head>
+
+<body>
+    <!--
+        경로
+            절대경로[서울시 종로구 종로12길15 9층 903호]
+                C:\Kwon\workspace\web\Nov17_1_HTML\jjan.jpg
+                이걸 서버에서 실행할건데, 서버에는 저런 경로 없음
+                -> 활용도가 낮음
+            상대경로[옆강의실]
+                지금 작업중인 이 html기준으로
+                이 프로젝트 통째로 서버에 보내서 실행할거라서
+                .  : 현재 위치
+                .. : 한단계 상위
+    -->
+    <!--
+        이미지 사이즈 조절
+            1) 안해야, 지금 필요한 사이즈의 이미지가 있어야
+            2) 어쩔수없이 해야한다면 : css
+        
+        사이즈
+            100  : 100px
+            100px: 100px
+            100% : 한단계 상위의 상대사이즈
+            -> 가로든 세로든 둘중 하나만 조절하면, 나머지 하나는 비율살려줌
+            -> 보통 하나만 조절
+    -->
+    <img src="C:\Kwon\workspace\web\Nov17_1_HTML\jjan.jpg" width="50%" height="100px">
+    <hr>
+    <img src="jjan.jpg">
+    <hr>
+    <img src="test/Kiwi64.png">
+    <hr>
+    <img src="../test2/android_normal.png">
+    <hr>
+    <!--
+        HTML 4.01 : add-on이 필요(active-x, flash, ...)
+        HTML 5 : add-on없이 html만으로 구현
+
+        HTML 4.01 : img말고 나머지들은 <embed>을 활용, 미지원시 add-on필요
+        HTML 5 : 공식적으로 <video>, <audio> 추가됨
+    -->
+    <video src="spring.mp4" controls></video>
+    <audio src="tunaktunaktun.mp3" controls></audio>
+    <embed src="Bluetooth.pdf">
+</body>
+
+</html>

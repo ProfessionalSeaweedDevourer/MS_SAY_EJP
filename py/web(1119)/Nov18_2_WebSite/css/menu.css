@@ -1,0 +1,11 @@
+.aMenu {
+    width: 200px;
+    box-shadow: 3px 3px 3px black;
+    margin: 10px;
+    
+    float: left; /* 격자형 배치 */
+}
+
+.aMenu img {
+    max-width: 180px;
+}

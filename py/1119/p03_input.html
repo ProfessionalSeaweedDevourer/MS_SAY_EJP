@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Input Example</title>
+</head>
+
+<body>
+    <a href="http://195.168.9.135:9999/xycalc?x=3&y=4"> 3+4 </a>
+    <hr>
+    <!-- form button -->
+     <form action="abcd"> <!-- action="" 입력값으로, 버튼을 눌렀을 때 입력을 지정할 수 있다. -->
+        <button>TEST</button>
+     </form>
+
+    <form action="http://195.168.9.135:9999/xycalc">
+        <input name="dcba">
+        <input name="qwer"> <!-- 입력값을 name=값 형태로 보낸다. -->
+        <button>TEST</button> 
+     </form>
+
+    <form action="http://195.168.9.135:9999/xycalc">
+        x: <input name="x"> <br>
+        y: <input name="y"> <br> <!-- 입력값을 name=값 형태로 보낸다. -->
+        <button>TEST</button> 
+     </form>
+
+     <form action="http://195.168.9.135:9999/gugudan.show">
+        시작: <input name="start"> <br>
+        끝: <input name="end"> <br>
+        <button>구구단</button>
+     </form>
+
+</body>
+
+</html>

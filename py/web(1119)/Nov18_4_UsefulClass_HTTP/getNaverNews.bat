@@ -1,0 +1,1 @@
+python p03_getNaverNews.py

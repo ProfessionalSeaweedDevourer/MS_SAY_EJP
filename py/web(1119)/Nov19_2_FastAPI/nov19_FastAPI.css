@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "Magic";
+    src: url("Magic.ttf");
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    box-shadow: 3px 3px 3px black;
+}
+
+th {
+    font-family: "Magic";
+    font-size: 20pt;
+    height: 50px;
+}
+
+input {
+    width: 250px;
+    height: 30px;
+}
+
+select {
+    width: 257px;
+    height: 37px;
+}
+
+button {
+    width: 257px;
+    height: 37px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

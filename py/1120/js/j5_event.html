@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title> 11/20 JS </title>
+        <script>
+            
+            function surprise(){
+                alert("!!!")
+            }
+
+            function meow(){
+                alert("야옹")
+            }
+
+            // Callback 함수: 
+            // 직접 호출하는 일은 없고,
+            // 어떤 이벤트에 연결해서 그 이벤트 발생 시 자동으로 '불려오는' 함수.
+
+            // 할 일이 많아지면...한참 위에서 정의하고 한참 아래에서 연결함
+            // 그냥 글자 수가 많음 & 인터프리터 = 버그잡기지옥
+            // >> 기본 JS는 여전히 쓰레기 > 
+
+        </script>
+    </head>
+
+    <body>
+        <button onclick = "surprise();"> 놀라워요 </button>
+
+        <h1 ondblclick="meow();"> 고양이 </h1>
+    </body>
+
+</html>

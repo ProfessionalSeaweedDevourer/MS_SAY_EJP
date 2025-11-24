@@ -1,0 +1,78 @@
+@font-face {
+    /*
+        CSS3에 추가된 웹폰트 기능
+            사용자컴에 설치가 안되어있어도 폰트 사용 가능하게
+            1) CSS3에 추가된 기능 -> IE에서 안됨
+            2) 폰트파일 용량이 상당히 큼, 서버에서 사용자에게 폰트파일 제공
+                서버가 느리면?
+            -> 실무에서는 이미지로 작업
+    */
+    font-family: "dm";
+    src: url("DOSMyungjo.ttf");
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    /* 기본 여백 제거 */
+    margin: 0px;
+    padding: 0px;
+}
+
+#siteTitleArea {
+    width: 100%;
+    position: fixed;
+    background-color: #ffffffcc;
+}
+
+#siteTitle {
+    font-family: "dm";
+    width: 1200px; /* 1280 x 1024 */
+    font-size: 30pt;
+    height: 80px;
+    text-shadow: 2px 2px 2px orange;
+    font-weight: 900; /* 굵게 */
+}
+
+#siteMenuArea {
+    background-color: #000000;
+}
+
+#siteMenu {
+    width: 1200px;
+    height: 40px;
+}
+
+#siteMenu a {
+    /*
+        속성명 시간 속도조절
+                    ease-in : 점점빨라짐
+                    ease-out : 점점느려짐
+                    linear : 등속
+        CSS3에 추가된...
+    */
+    transition: all 0.5s ease-in;
+    color: orange;
+    margin-left: 20px;
+    font-family: "dm";
+}
+#siteMenu a:hover{
+    color:white;
+    text-shadow: 0px 0px 5px orange;
+}
+#siteContentArea{
+    /* 단독 테이블 가운데 정렬 */
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-top: 140px;
+
+    width: 1200px;
+}
+
+::-webkit-scrollbar{
+    /* 크롬, 엣지에서만 */
+    display: none;
+}

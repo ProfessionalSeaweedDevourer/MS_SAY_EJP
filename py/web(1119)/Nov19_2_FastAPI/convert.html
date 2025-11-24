@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="nov19_FastAPI.css">
+    </head>
+
+    <body>
+        <form action = "http://127.0.0.1:8000/convert">
+            <table>
+                <tr>
+                    <th>단위변환</th>
+                </tr>
+                <tr>
+                    <td align = "center">
+                        <input name = "num" placeholder="숫자">
+                    </td>
+                </tr>
+                <tr>
+                    <td align = "center">
+                        <select name="what">
+                            <option value="len">cm to inch</option>
+                            <option value="size">m^2 to 평</option>
+                            <option value="temp">Celcius to Fahrenheit</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <button>변환</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title> 11/20 JS </title>
+        <script>
+            // JS는 if문도 함수처럼 가둬놔야 한다.
+            var a = 10;
+            if (a>5) {
+                alert("5보다 큽니다.")
+            } else if (a>3){
+                alert("3과 5 사이입니다.")
+            } else {
+                alert("3 이하입니다.")
+            }
+
+            switch (a) {
+                case 4: // switch문은 엄격하게 '변수값 일치'로만 작동한다. 비교는 불가.
+                    alert("a는 4입니다.")
+                    break;
+                case 10:
+                    alert("a는 10입니다.")
+                    break;
+            }
+
+            // 그렇다면, switch문의 용도는?
+            // 
+
+            var role = "DBA"
+            switch (role){
+                case "DBA":
+                    alert(111);
+                case "DUA":
+                    // ~와 같이, break 없이 순차 실행을 쓸 수 있는 상황에서 유용
+            }
+
+        </script>
+    </head>
+
+</html>
