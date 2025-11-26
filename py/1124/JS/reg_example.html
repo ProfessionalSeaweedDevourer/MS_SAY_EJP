@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title> 상품 정보 등록 페이지 </title>
+        <script>
+            function requirementCheck(){
+                var numSet = "1234567890"; // 이것이 들어가야 하도록
+                var numOk = false;
+
+                for(var i=0; i<numSet.length; i++){
+                    if(pwField.value.indexOf(numSet[i]) != -1){
+                        numOk = true;
+                        break;
+                    } 
+                }
+            }
+
+            function checkkk(){
+                
+                var nameInput = document.ff.name;
+
+                if (!nameInput.value){ // 입력값이 없을 경우
+                    alert("제품명을 입력해야 합니다.");
+                    nameInput.focus(); // 강제로 커서 이동하여 주목시키기
+                    return false;
+                }
+
+                 if (!priceInput.value){ // 입력값이 없을 경우
+                    alert("제품명을 입력해야 합니다.");
+                    priceInput.focus(); // 강제로 커서 이동하여 주목시키기
+                    return false;
+                }
+
+                if(nameInput.value.length <3){
+                    alert("제품명은 3글자 이상이어야 합니다.");
+                    nameInput.focus();
+                    return false;
+                }
+
+                // 중복 요소 검사는 JS로 불가, 나중에 db 연동과 함께 다룰 것
+
+                alert(nameInput);
+                // return false; // 테스트용 기능 비활성화
+                return true;
+            }
+        </script>
+    </head>
+
+    <body>
+        <form action="http://localhost:8000/product.reg"
+        onsubmid="return checkkk();"
+        name="ff">
+         <!-- return false: 기존 기능 죽이기 -->
+            제품명: <input name="name" autofocus maxlength="10"><br> <!-- required도 html5 전용-->
+            가격: <input name="price" required><br>
+        <button> 등록 </button>
+        </form>
+    </body>
+</html>

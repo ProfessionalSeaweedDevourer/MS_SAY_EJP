@@ -13,7 +13,6 @@ class ExpDAO:
         con, cur = ejpDBManager.makeConCur()
         if con is None: return 0
 
-        # SQL 수정: 바인드 변수 이름 :date 대신 :exp_dt 사용
         sql = """
             INSERT INTO My_Exp (Exp_ID, Exp_Date, Exp_Item, Exp_Amount, Cat_ID)
             VALUES (My_Exp_Seq.NEXTVAL, :exp_dt, :item, :amount, :cat_id)

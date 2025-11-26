@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>메뉴 테스트 </title>
+
+        <script src="jQuery.js"></script>
+
+        <script>
+
+            $(function () {
+                $("#button").click(function (){
+                    $("#menu1").toggle();
+                    $("#menu2").toggle();
+                    $("#menu3").toggle();
+                })
+            });
+
+        </script>
+
+    </head>
+
+    <body>
+
+    <table border="1">
+        <tr>
+            <td id = "menu1"><a href="https://www.google.com"> Google </a></td>
+        </tr>
+        <tr>
+            <td id = "menu2"><a href="https://www.youtube.com"> Youtube </a></td>
+        </tr>
+        <tr>
+            <td id = "menu3"><a href="https://www.github.com"> Github </a></td>
+        </tr>
+
+        <tr>
+            <td id="button"> Button </td>
+        </tr>
+
+    </table>
+
+    </body>
+
+</html>

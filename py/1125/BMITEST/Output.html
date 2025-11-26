@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>BMI TEST 결과</title>
+
+        <link rel="stylesheet" href="tables.css">
+        
+        <script src="outputResult.js"></script> 
+    </head>
+
+    <body onload="displayResults()"> 
+        
+        <table id="inputTable" width="500" align="center"> 
+            
+            <tr id="titleArea">
+                <th colspan="2"> <h1> BMI TEST 결과 </h1> </th>
+            </tr>
+            
+            <tr>
+                <td colspan="2" align="center" id="photoArea"> 
+                    </td> 
+            </tr>
+            
+            <tr>
+                <td> 이름 </td>
+                <td id="resultName"></td> 
+            </tr>
+            
+            <tr>
+                <td> 입력 체중 (kg) </td>
+                <td id="resultWeight"></td> 
+            </tr>
+            
+            <tr>
+                <td> 표준 체중 (kg) </td>
+                <td id="resultStdWeight"></td> 
+            </tr>
+            
+            <tr>
+                <td> 비만도 (BMI %) </td>
+                <td id="resultBMI"></td> 
+            </tr>
+            
+            <tr>
+                <td> 판정 결과 </td>
+                <td id="resultJudgment"></td> 
+            </tr>
+
+        </table>
+
+    </body>
+</html>

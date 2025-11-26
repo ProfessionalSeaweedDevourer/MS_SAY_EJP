@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>jQuery 테스트 </title>
+
+        <script src="jQuery.js"></script>
+
+        <script>
+        // jQuery 문법: jQuery(선택자).이벤트(콜백함수);
+        // 일부 예외가 있지만 이벤트 호출은 on 부분만 빼고 그대로
+        // 콜백함수는 함수명 필요없으면 안 써도 작동함
+        // jQuery 부분은 $로 줄여 쓴다. > $로 불러 오는 다른 라이브러리랑 겹치면 jQuery를 다 써야 함
+        // 선택자로는 기존 js의 변수명 외에, css 선택자도 활용 가능.
+
+
+            // $(document).ready(function abcd(){
+            //     alert("!!!");    
+            // });
+            // 이는 body의 load 이벤트와 같음. 실질적인 main 영역 역할.
+
+            // 현행 최신 문법은 좀 더 단순하다.
+            $(function(){
+                alert("!!!");    
+            });
+
+            $(function(){
+                $("button").click(function showAlertt(){
+                    alert("Alert");
+                });
+            });
+
+            $(function(){
+                var z = $("aaaa");
+                $("button").click(function (){
+                    alert(z.val());
+                });
+
+        </script>
+
+    </head>
+
+    <body>
+    
+        <input><br>
+        <button> 버튼 </button>
+    
+    </body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>jQuery 테스트 </title>
+
+        <script src="jQuery.js"></script>
+
+        <style>
+            h1{
+                color: orange
+            }
+
+            h2{
+                color: red
+            }
+
+            img {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100px;
+                transition: all 1s ease-in;
+            }
+
+        </style>
+
+        <script>
+
+
+            $(function(){
+                $("#b1").click(function b1(){
+                    alert("버튼 클릭됨");
+                })
+            });
+
+            $(function(){
+                $("h3").click(function h3(){
+                    var h3input = $("#h3input").val(); // ~.val()로 대상의 값을 가져올 수 있음. .val("값")으로 값 설정도 가능
+                    alert(h3input);
+                })
+            });
+
+            $(function(){
+                $("#b2").click(function b2(){
+                    if ($("h2").css("color")=="rgb(255, 0, 0)"){
+                        $("h2").css("color","rgb(0, 0, 255)");
+                    } else {
+                        $("h2").css("color","rgb(255, 0, 0)");
+                    }
+              })
+            });
+
+            $(function(){
+                $("#b3").click(function b3(){
+                        $("h2").css("background-color","rgb(255, 255, 0)");
+                    })
+            });
+            
+
+            $(function(){
+                var imgleft = 0;
+                var imgtop = 0;
+                $("#b4").click(function b4(){
+                    t = setInterval(function (){
+                        var x  = Math.random() * 100;
+                        var y  = Math.random() * 100;
+                        imgleft += x;
+                        imgtop += y;
+                        $("img").css("left", imgleft + "px");
+                        $("img").css("top", imgtop + "px");
+                    }, 1000);
+                })
+            });
+
+        </script>
+
+    </head>
+
+    <body>
+    
+        <button id="b1"> <h1> Button 1 </h1> </button>
+
+        <button id="b2"> <h2> 글자 색 수정 </h2> </button>
+
+        <button id="b3"> 배경 색 수정 </button>
+
+        <img src="cursedcat2.png">
+
+        <button id="b4"> 이미지 옮기기 </button>
+    
+    </body>
+
+</html>

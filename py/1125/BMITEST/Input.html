@@ -1,0 +1,63 @@
+    <!DOCTYPE html>
+    <html>
+        
+        <head>
+            <meta charset="UTF-8">
+            <title>BMI TEST</title>
+
+            <!-- CSS 불러오기 -->
+            <link rel="stylesheet" href="tables.css">
+
+            <!-- JS 불러오기 -->
+            <script src="BMIvalidate.js"></script> <!-- BMI 입력값 유효성 검증 -->
+            <script src="Generalvalidate.js"></script> <!-- 일반 입력값 유효성 검증 함수 라이브러리 -->
+            <script src="result.js"></script>   <!-- BMI 계산 및 결과 처리 -->
+
+        </head>
+
+        <body>
+
+            <form name="BMIForm"
+            action="" onsubmit="return BMIvalidate(event)"
+            enctype="multipart/form-data">
+
+            <!-- 6줄 테이블로 입력 페이지 구성 -->
+            <table id = "inputTable" 
+            width="500" align="center">
+                <!-- 1) 제목 줄: 두꺼운 줄 하나 -->
+                <tr id = "titleArea">
+                    <th colspan="2"> <h1> BMI TEST </h1> </th>
+                </tr>
+                <!-- 2) 이름 입력 줄 -->
+                <tr>
+                    <td> 이름 </td>
+                    <td> <input type="text" id="nameInput" name="name"> </td>
+                </tr>
+                <!-- 3) 키 입력 줄 -->
+                <tr>
+                    <td> 키 (cm) </td>
+                    <td> <input type="text" id="heightInput" name="height"> </td>
+                </tr>
+                <!-- 4) 몸무게 입력 줄 -->
+                <tr>
+                    <td> 몸무게 (kg) </td>
+                    <td> <input type="text" id="weightInput" name="weight"> </td>
+                </tr>
+                <!-- 5) 사진 업로드 줄 -->
+                <tr>
+                    <td> 사진 업로드 </td>
+                    <td> <input type="file" id="photoInput" name="photo"> </td>
+                </tr>
+                <!-- 6) 제출 버튼 줄 -->
+                <tr>
+                    <td colspan="2" align="center">
+                        <button> 결과 보기 </button>
+                    </td>
+
+            </table>
+
+        </form>
+
+        </body>
+
+    </html>

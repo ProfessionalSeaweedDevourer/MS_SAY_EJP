@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>jQuery 테스트 </title>
+
+        <script src="jQuery.js"></script>
+
+        <script>
+            $(function(){
+                alert("!!!");    
+            });
+
+            $(function(){
+                $("h1").dblclick(function (){
+                    for (var i =0; i<3; i++){
+                    alert("h1 더블클릭됨");
+                    }
+                })
+            });
+
+            $(function(){
+                $("h2").click(function h2(){
+                    alert("h2 클릭됨");
+                })
+            });
+
+            $(function(){
+                $("h3").click(function h3(){
+                    var h3input = $("#h3input").val(); // ~.val()로 대상의 값을 가져올 수 있음. .val("값")으로 값 설정도 가능
+                    alert(h3input);
+                })
+            })
+
+        </script>
+
+    </head>
+
+    <body>
+    
+        <h1> TEST1 </h1>
+
+        <h2> TEST2 </h2>
+
+        <input id="h3input"><br>
+        <h3> TEST3 </h3>
+    
+    </body>
+
+</html>

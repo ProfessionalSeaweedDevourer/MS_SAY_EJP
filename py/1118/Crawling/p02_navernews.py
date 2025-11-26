@@ -7,7 +7,7 @@ hc.request("GET", "/")
 resBody = hc.getresponse().read()
 hc.close()
 
-con = MongoClient("195.168.9.145")
+con = MongoClient("195.168.9.207")
 db = con.navernews
 
 newsData = BeautifulSoup(resBody, "html.parser", from_encoding="utf-8")
