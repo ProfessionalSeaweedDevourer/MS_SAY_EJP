@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> 반복문 테스트 </title>
+        
+
+        <script src="jQuery.js"></script>
+        <script>
+
+            $(function () {
+                var csss = [
+                    {c: "red", bgc: "black"},
+                    {c:"green",bgc:"gray"},
+                    {c:"blue",bgc:"yellow"}
+                ];
+
+                $("#colorBtn1").click(function(){
+                    $.each(csss, function(i, d){
+                        $("#text"+(i+1)).css({
+                            "color": csss[i].c,
+                            "background-color": csss[i].bgc
+                        });
+                    });
+                });
+
+                // 1초간의 딜레이를 두고 적용되도록 하기
+                $("#colorBtn2").click(function(){
+                    $.each(csss, function(i, d){
+                        setTimeout(function(){
+                            $("#text"+(i+1)).css({
+                                "color": csss[i].c,
+                                "background-color": csss[i].bgc
+                            });
+                        }, 1000 * (i+1));
+                    });
+                });
+
+            });
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <p id="text1">개미는</p>
+        <p id="text2">오늘도</p>    
+        <p id="text3">열심히 일을 하네</p>
+
+        <button id="colorBtn1"> 지금 바로 색상 입히기</button>
+
+        <button id="colorBtn2"> 천천히 색상 입히기 </button>
+
+    </body>
+
+
+</html>
+

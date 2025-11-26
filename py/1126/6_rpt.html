@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> jQuery 테스트 </title>
+
+        <script src="jQuery.js"></script>
+
+        <script>
+            $(function(){
+                // 반복문: for, for-of, while, do-while...
+                // for: 0,1,2....
+                // for - of: 배열 탐색
+                // while: 조건이 참인 동안 반복
+                // do - while: 최소 1회 실행 후 조건이 참인 동안 반복 (안 씀)
+                
+                // jQuery만의 반복문: each()
+
+                $(function arrayObjTest(){
+                   var menu = [
+                        {name: '김밥', price: 2500},
+                        {name: '라면', price: 3000},
+                        {name: '떡볶이', price: 3500}
+                    ];
+
+                    $("b4").click(function(){
+                        $("button").each(function(iiii, bbbb){
+                            $(bbbb).css("font-size", (iiii+1)*10 + "pt" );
+                        });
+                    });
+
+                    $("b3").click(function(){
+                        $.each(menu, function(iii, ddd){
+                            alert(menu[iii].name + ": " + menu[iii].price + "원");
+                        });
+                    });
+
+
+                    $("#b1").click(function(){
+                        for(var i=0; i<menu.length; i++){
+                            $("#result1").append("<p>" + menu[i].name + ": " + menu[i].price + "원</p>");
+                        }
+                    })
+                });
+            });
+
+
+        </script>
+
+    </head>
+
+    <body>
+        <h1>jQuery 테스트</h1>
+
+        <button id="b1">메뉴 출력</button>
+        <div id="result1"></div>
+
+        <button id="b3">each 테스트</button>
+
+        <button id="b4">버튼 글자 크기 변경</button>
+
+</html>
