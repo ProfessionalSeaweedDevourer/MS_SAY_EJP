@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title> HTML5 Basics </title>
+        <script src="jQuery.js"></script>
+        <script>
+            $(function(){
+                // 1. 상태 및 설정 변수 정의 (전역 오염 방지)
+                var isDrawing = false;
+                var prevX = 0;
+                var prevY = 0;
+                
+                var $canvas = $("#cv");
+                var paper = $canvas[0]; // jQuery 객체에서 DOM 요소 가져오기
+                var pen = paper.getContext("2d");
+                
+                var canvasOffset = $canvas.offset();
+                var offsetX = canvasOffset.left;
+                var offsetY = canvasOffset.top;
+                
+                var lineWidth = 5;
+
+                // 2. 캔버스 초기 스타일 설정
+                pen.strokeStyle = "#ff6f91"; 
+                pen.lineWidth = lineWidth;
+                pen.lineJoin = "round";
+                pen.lineCap = "round";
+
+                // 3. 헬퍼 함수: 캔버스 내부 좌표 계산
+                function getCanvasCoords(pageX, pageY) {
+                    return {
+                        x: pageX - offsetX,
+                        y: pageY - offsetY
+                    };
+                }
+
+                // 4. 헬퍼 함수: 선 그리기 로직
+                function drawLine(currentX, currentY) {
+                    pen.lineTo(currentX, currentY);
+                    pen.stroke();
+                    pen.beginPath(); // 이전 경로를 닫고 새 경로 시작
+                    pen.moveTo(currentX, currentY); 
+                }
+
+                // 5. 이벤트 핸들러 통합 등록
+                $canvas.on({
+                    mousedown: function (e) {
+                        e.preventDefault();
+                        isDrawing = true;
+                        
+                        var coords = getCanvasCoords(e.pageX, e.pageY);
+                        prevX = coords.x;
+                        prevY = coords.y;
+                        
+                        pen.beginPath();
+                        pen.moveTo(prevX, prevY); 
+                    },
+                    
+                    mousemove: function (e) {
+                        e.preventDefault();
+                        if (!isDrawing) return;
+
+                        var coords = getCanvasCoords(e.pageX, e.pageY);
+                        drawLine(coords.x, coords.y);
+                    },
+                    
+                    mouseup: function (e) {
+                        e.preventDefault();
+                        isDrawing = false;
+                    },
+                    
+                    mouseleave: function(e){
+                        e.preventDefault();
+                        isDrawing = false;
+                    }
+                });
+            });
+        </script>
+
+        <style>
+            canvas {
+                border: black solid 2px;
+            }
+        </style>
+
+    </head>
+    
+    <body>
+
+        <!-- html5만의 기능: canvas. '그릴 수 있는 공간'.-->
+        <canvas id="cv" width="1200px" height="800px">
+            
+        </canvas> 
+
+    </body>
+
+</html>

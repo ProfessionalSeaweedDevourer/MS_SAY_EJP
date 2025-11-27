@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> - </title>
+        <script src="jQuery.js"></script>
+
+        <script>
+            
+            $(function(){
+                $("div").mouseenter(function (e){
+                    $("h2").text("mouseenter")
+                })
+                $("html").mousemove(function (e){
+                    $("img").css("top", (e.pageY) + "px").css("left", (e.pageX) + "px");
+                })
+                $("div").mouseleave(function (e){
+                    $("h2").text("mouseenter")
+                })
+            })
+
+        </script>
+
+        <!-- fixed로 주면 위치가 안 맞는다.-->
+
+        <style> 
+            img {
+                position: absolute;
+            }
+        </style>
+
+    </head>
+    
+    <body>
+
+        <div></div>
+        <h1></h1>
+        <h2></h2>
+        <h3></h3>
+        
+        <img src="OIIA-Website-loop.gif" width="12%">
+
+    </body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> DOM </title>
+        <script src="jQuery.js"></script>
+
+        <script>
+            
+            $(function(){
+                $("#regbtn").click(function(){ // 등록 버튼을 누르면
+
+                     // 그냥 한 줄로 끝내기
+                    // $("table").append('<tr><td>' + $("#nameInput").val() + '</td><td>' + $("#priceInput").val() + '</td></tr>'); 
+
+                    // 1. 입력 값 가져오기
+                    var productName = $("#nameInput").val();
+                    var productPrice = $("#priceInput").val();
+                   
+                    // 2. 새로운 행 (tr) 내용 생성 (HTML 문자열)
+                    var newRow = '<tr><td>' + productName + '</td><td>' + productPrice + '</td></tr>';
+                    // 추가할 행 = 줄 / 칸 (이름) / 칸 (가격)
+
+                    // 3. 생성된 행을 테이블의 마지막에 추가: append() 활용하여 자식 요소 생성
+                    $("table").append(newRow); 
+
+                    // 4. 입력칸 초기화
+                    $("#nameInput").val("");
+                    $("#priceInput").val("");
+                    
+                });
+            });
+
+        </script>
+
+    </head>
+    
+    <body>
+
+        제품명: <input id="nameInput"><br>
+        가격: <input id="priceInput"><br>
+        <button id="regbtn"> 등록 </button>
+        <hr>
+
+        <table border="1"> <thead>
+                <tr>
+                    <th> 제품명 </th>
+                    <th> 가격 </th>
+                </tr>
+            </thead>
+        </table>
+
+    </body>
+
+</html>

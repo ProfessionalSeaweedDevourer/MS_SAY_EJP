@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> - </title>
+        <script src="jQuery.js"></script>
+
+        <script>
+            
+            $(function(){ // 겉 function의 역할: body onload.
+                // 즉, 이것으로 둘러싸지 않으면 '이것보다 나중에 정의된 요소'는 건드릴 수 없음.
+                // '시점'의 문제: 이 함수로 추가되는 버튼은 대상이 될 수 없음.
+                $("button").click(function(){
+                    var newbtn = $("<button></button>").text(" 버튼 ")
+                    $("body").append(newbtn);
+                })
+            })
+
+        </script>
+
+    </head>
+    
+    <body>
+
+
+        <button> 버튼 </button>
+
+
+    </body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> this 활용 </title>
+
+        <script src="jQuery.js"></script>
+
+        <script>
+
+            
+            // // 모든 버튼의 배경을 빨간색으로 바꾸기
+            // $(function () {
+            //     $("button").click(function (){
+            //         $("button").css("background-color", "red");
+            //     });
+            // });
+
+            // this를 활용해, '누른 버튼만' 배경을 바꾸는 법
+            $(function () {
+                $("button").click(function (){ // 버튼을 누르면...
+                    $(this).css("background-color", "red"); // 누른 버튼(this)에만 색상 변화
+                    $(this).parent().css("background-color", "yellow"); // 누른 버튼(this)의 부모(td)에만 색상 변화
+                    // 확장: td의 부모 = tr, tr의 부모 = table
+                    $(this).parent().parent().parent().css("background-color", "lightblue");
+
+                    // this는 이벤트 발생 객체, parent()는 여기서 한 단계씩 상위
+                    // .closest("css선택자"): 올라가다가 특정 요소에 가장 가까운 상위 요소를 찾음
+                    // .closest("table")를 사용하면 상위 테이블까지 바로 접근 가능
+                    $(this).closest("table").css("width", "500px");
+                });
+            });
+
+            // 실습: 아무 td나 클릭하면 해당 td에 포함된 글자들을 파란색으로 바꾸기
+            // parent()와 반대되는, '하위 접근' 방법: .children()
+            $(function () {
+                $("td").click(function (){
+                    $(this).css("color", "blue");
+                });
+            });
+
+            // 실습: 버튼을 누르면 근처 input의 내용을 alert 하기
+            $(function () {
+                $("button").click(function (){
+                    var inputVal = $(this).parent().parent().find("input").val();
+                    // this(버튼)의 부모(td)의 부모(tr)에서, input이 들어간 요소의 값.
+                    alert(inputVal);
+                });
+            });
+
+        </script>
+
+    </head>
+
+    <body>
+
+    <table border="1">
+        
+        <tr>
+            <td> <input id="input11"> test </td>
+            <td> <button id="btn11"> 버튼 1 </button> </td>
+        </tr>
+        <tr>
+            <td><input id="input12"></td>
+            <td> <button id="btn12"> 버튼 2 </button> </td>
+        </tr>
+        <tr>
+            <td><input id="input13"></td>
+            <td> <button id="btn13"> 버튼 3 </button> </td>
+        </tr>
+
+    </table>
+
+    <table border="1">
+        
+        <tr>
+            <td> <input id="input21"> </td>
+            <td> <button id="btn21"> 버튼 1 </button> </td>
+        </tr>
+        <tr>
+            <td> <input id="input22"> </td>
+            <td> <button id="btn22"> 버튼 2 </button> </td>
+        </tr>
+        <tr>
+            <td> <input id="input23">  </td>
+            <td> <button id="btn23"> 버튼 3 </button> </td>
+        </tr>
+
+    </table>
+
+    </body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> - </title>
+        <script src="jQuery.js"></script>
+
+        <script>
+            
+            $(function(){
+                $("div").click(function(){
+                    $("h1").text("Clicked")
+                })
+
+                // 'Click'은 'mousedown' > 'mouseup'의 연쇄.
+                $("div").mousedown(function(){
+                    $("h1").text("mousedown")
+                })
+                $("div").mouseup(function(){
+                    $("h1").text("mouseup")
+                })
+                // 각 상황으로 이렇게 분리해서 쓰는 것이 향후 이벤트 설계에서 유용할 수 있다.
+            })
+
+        </script>
+
+    </head>
+    
+    <body>
+
+        <div>div</div>
+        <h1>h1</h1>
+
+    </body>
+
+</html>
