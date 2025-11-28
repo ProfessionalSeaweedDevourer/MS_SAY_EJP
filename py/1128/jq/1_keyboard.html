@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> 키보드 활용 </title>
+
+        <script src="jQuery.js"></script>
+
+        <script>
+
+            $(function(){
+                
+                $("input").keydown(function(e){
+                    $("h1").text("keydown: " + e.keyCode)
+                })
+                $("input").keyup(function(e){
+                    $("h1").text("keyup: " + e.keyCode)
+                })
+
+                $("html").keydown(function (e){
+                    if (e.keyCode == 37){
+                        var x = $("h2").offset().left - 3
+                        $("h2").css("left", x + "px")
+                    }
+                    else if (e.keyCode == 38){
+                        var y = $("h2").offset().top - 3
+                        $("h2").css("top", y + "px")
+                    }
+                    else if (e.keyCode == 39){
+                        var x = $("h2").offset().left + 3
+                        $("h2").css("left", x + "px")
+                    }
+                    else if (e.keyCode == 40){
+                        var y = $("h2").offset().top + 3
+                        $("h2").css("top", y + "px")
+                    }
+                })
+
+            })
+
+        </script>
+
+        <style>
+            h2 {
+                position: absolute
+            }
+        </style>
+
+
+    </head>
+
+    <body>
+
+        <input>
+        <h1> Text </h1>
+
+        <hr>
+        <h2> 야옹 </h2>
+
+    </body>
+
+
+</html>

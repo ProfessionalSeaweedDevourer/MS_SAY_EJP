@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> AJAX Parsing </title>
+        <script src="jQuery.js"></script>
+
+        <script>
+            // 31일 예제와 기능적으로 동일.
+            // AJAX: 비동기 js & XML. js를 활용한 비동기 통신으로 xml 가져옴
+            // '동일 출처 정책': 외부 서버 데이터를 받아오면 브라우저가 거부함.
+            
+
+            // $.ajax({
+            //     url: "주소",
+            //     success: function(내용){
+            //     }
+            // })
+
+            $.ajax({
+                url: "https://www.kma.go.kr/repositary/xml/fct/mon/img/fct_mon1rss_108_20251030.xml",
+                success: function(asd){
+                    alert(asd); // 미작동
+                }
+            })
+
+        </script>
+
+    </head>
+</html>

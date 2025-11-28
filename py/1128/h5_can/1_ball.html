@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Canvas Animation - Boundary Bounce</title>
+    <script src="jQuery.js"></script>
+
+    <script>
+        $(function() {
+            const CANVAS_SIZE = 666; 
+            const BAR_WIDTH = 100;
+            const BAR_HEIGHT = 15;
+            const BAR_Y = CANVAS_SIZE - BAR_HEIGHT; // 캔버스 하단에 위치
+
+            var canvas = document.getElementById('cv');
+            var pen = canvas.getContext('2d'); 
+
+            var ball = new Image();
+            var ballX = 0; 
+            var ballY = 0; 
+
+            var barX = 100; // 바의 X 좌표 (초기 위치)
+            
+            var dx = 4; // X축 속도
+            var dy = 3; // Y축 속도
+            
+            var isBallAlive = true;
+
+            ball.src="probe.png"
+
+            ball.onload = function() {
+                const BALL_WIDTH = ball.width /2 ;
+                const BALL_HEIGHT = ball.height /2 ;
+
+                setInterval(function(){
+                    pen.save()
+                    pen.fillStyle="#00000011"
+                    pen.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE)
+
+                    ballX += dx;
+                    ballY += dy;
+                    
+                    // 공의 캔버스 경계 충돌 처리
+                    if (ballX + BALL_WIDTH >= CANVAS_SIZE || ballX <= 0) {
+                        dx *= -1;
+                    } 
+                    if (ballY + BALL_HEIGHT >= CANVAS_SIZE || ballY <= 0) {
+                        dy *= -1; 
+                    } 
+                    
+                    // 이미지 그리기 (그림자 포함)
+                    pen.shadowOffsetX=0
+                    pen.shadowOffsetY=0
+                    pen.shadowBlur=10
+                    pen.shadowColor="#2f4858"
+
+                    pen.drawImage(ball, ballX, ballY);
+                    
+                    // 바(Bar) 그리기 (그림자 색상 변경 후)
+                    pen.shadowColor = "white"
+                    pen.fillStyle = "#32d9bf"
+                    pen.fillRect(barX, BAR_Y, BAR_WIDTH, BAR_HEIGHT)
+
+                    pen.restore()
+
+                }, 15)
+
+                // 마우스 움직임 이벤트 처리
+                $("#cv").mousemove(function (e){
+                    // 캔버스 내 마우스 X 좌표 (jQuery 사용)
+                    let mouseX = e.pageX - $(this).offset().left;
+                    
+                    // 바의 중앙이 마우스를 따라오도록 X 좌표 설정
+                    let newBarX = mouseX - (BAR_WIDTH / 2);
+
+                    // ⭐ 바의 경계 충돌 처리: 캔버스 밖으로 나가지 않도록 제한
+                    if (newBarX < 0) {
+                        barX = 0; // 좌측 경계
+                    } else if (newBarX + BAR_WIDTH > CANVAS_SIZE) {
+                        barX = CANVAS_SIZE - BAR_WIDTH; // 우측 경계
+                    } else {
+                        barX = newBarX;
+                    }
+                })
+            };
+        });
+    </script>
+
+    <style>
+            
+        canvas {
+            border: darkslategray solid 2px
+            }
+  </style>
+
+  </head>
+  
+  <body>
+
+    <canvas id ="cv" width="666" height="666">
+      IE 죽어
+    </canvas>
+
+</body>
+
+</html>

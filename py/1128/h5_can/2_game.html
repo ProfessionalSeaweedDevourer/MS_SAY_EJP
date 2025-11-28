@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title> 프로브 튕기기 </title>
+    <script src="jQuery.js"></script>
+
+    <script>
+        $(function() {
+            const CANVAS_SIZE = 666; 
+            const BAR_WIDTH = 100;
+            const BAR_HEIGHT = 15;
+            const BAR_Y = CANVAS_SIZE - BAR_HEIGHT;
+
+            var canvas = document.getElementById('cv');
+            var pen = canvas.getContext('2d'); 
+
+            var ball = new Image();
+            
+            var ballX = CANVAS_SIZE / 2; 
+            var ballY = CANVAS_SIZE / 2; 
+
+            var barX = (CANVAS_SIZE / 2) - (BAR_WIDTH / 2); 
+            
+            var dx = 4;
+            var dy = 4;
+            
+            var isBallAlive = true; 
+            var gameInterval; 
+            
+            ball.src="probe.png"
+
+            ball.onload = function() {
+                const BALL_RADIUS = ball.width / 4; 
+
+                gameInterval = setInterval(function(){
+                    
+                    pen.save()
+                    
+                    if (isBallAlive) {
+                        pen.fillStyle="#00000011"
+                        pen.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE)
+
+                        ballX += dx;
+                        ballY += dy;
+                    } else {
+                        pen.fillStyle="black"
+                        pen.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE)
+                    }
+
+                    if (isBallAlive) {
+
+                        //  발생 빈도가 가장 낮은 사건부터 판정하는 것이 최적화에 이롭다.
+
+                        if (ballX + BALL_RADIUS >= CANVAS_SIZE || ballX - BALL_RADIUS + 112 <= 0) {
+                            dx *= -1;
+                        } 
+                        
+                        if (ballY - BALL_RADIUS + 100 <= 0) {
+                            dy *= -1; 
+                        } 
+                        else if (dy > 0 && 
+                                ballY + BALL_RADIUS >= BAR_Y && 
+                                ballY + BALL_RADIUS <= BAR_Y + BAR_HEIGHT && 
+                                ballX + BALL_RADIUS > barX && 
+                                ballX - BALL_RADIUS < barX + BAR_WIDTH) {
+                            
+                            var hitPoint = ballX - (barX + BAR_WIDTH / 2); 
+                            dx = hitPoint * 0.3; 
+                            dy *= -1; 
+                        } 
+                        else if (ballY + BALL_RADIUS >= CANVAS_SIZE) {
+                            isBallAlive = false; 
+                            clearInterval(gameInterval); 
+                        }
+                    } 
+
+                    if (isBallAlive) {
+                        pen.shadowOffsetX=0
+                        pen.shadowOffsetY=0
+                        pen.shadowBlur=10
+                        pen.shadowColor="#2f4858"
+
+                        pen.drawImage(ball, ballX - BALL_RADIUS, ballY - BALL_RADIUS);
+                    } else {
+                        pen.textAlign = 'center';
+                        pen.fillStyle = 'red';
+                        pen.font = 'bold 60px Arial';
+                        pen.fillText('GAME OVER', CANVAS_SIZE / 2, CANVAS_SIZE / 2);
+                    }
+
+                    pen.shadowColor = "white"
+                    pen.fillStyle = "#32d9bf"
+                    pen.fillRect(barX, BAR_Y, BAR_WIDTH, BAR_HEIGHT)
+
+                    pen.restore()
+
+                }, 15)
+
+                $("#cv").mousemove(function (e){
+                    let mouseX = e.pageX - $(this).offset().left;
+                    let newBarX = mouseX - (BAR_WIDTH / 2);
+
+                    if (newBarX < 0) {
+                        barX = 0;
+                    } else if (newBarX + BAR_WIDTH > CANVAS_SIZE) {
+                        barX = CANVAS_SIZE - BAR_WIDTH;
+                    } else {
+                        barX = newBarX;
+                    }
+                })
+            };
+        });
+    </script>
+
+    <style>
+        canvas {
+border: darkslategray solid 2px
+}
+</style>
+
+  </head>
+  
+  <body>
+
+    <canvas id ="cv" width="666" height="666">
+      IE 죽어
+    </canvas>
+
+</body>
+
+</html>

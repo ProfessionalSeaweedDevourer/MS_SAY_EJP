@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 그림판 예제 </title>
+
+        <script src="jQuery.js"></script>
+
+        <script>
+            $(function (){
+                var paper = document.getElementById("cv");
+                var pen = paper.getContext("2d");
+                var xx = $("#cv").offset().left + 2;
+                var yy = $("#cv").offset().top + 2;
+                var drawMode=false; // '그리기 유지 상태'를 변수로 만들어 그리기 구현
+                var startX, startY, endX, endY;
+
+                $("#cv").mousedown(function (e){
+                    drawMode = true;
+                    startX = e.pageX - xx;
+                    startY = e.pageY - yy;
+
+                })
+                $("#cv").mousemove(function (e){
+                    if (drawMode){
+                        endX = e.pageX - xx;
+                        endY = e.pageY - yy;
+                        pen.beginPath();
+                        pen.moveTo(40,60);
+                        pen.lineTo(140, 160);
+                        pen.closePath()
+                        pen.stroke()
+                        startX = endX;
+                        startY = endY;
+                    }
+                })
+                $("#cv").mouseup(function (e){
+                    drawMode = false;
+                })
+
+            })
+        </script>
+
+        <style>
+            canvas {
+                border: black solid 2px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+    
+        <canvas id = "cv" width="600px" height="600px"></canvas>
+    
+    </body>
+
+
+</html>
