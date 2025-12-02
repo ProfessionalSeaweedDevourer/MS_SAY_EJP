@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <meta charset="utf-8">
+    <title>1202</title>
+    <style>
+        #map {
+            width: 400px;
+            height: 400px;
+        }
+ 
+        #roadview {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+    <script src="jQuery.js"></script>
+    <script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=d01dd6d0a3482a9000a7bc8fe55eeb6e"></script>
+    <script>
+        var roadviewManager = new kakao.maps.RoadviewClient();
+        var map; var roadview; var marker;
+ 
+        function moveMap(lat, lng) {
+            var loc = new kakao.maps.LatLng(lat, lng);
+            map.setCenter(loc);
+            roadviewManager.getNearestPanoId(loc, 50, function (panoId) {
+                roadview.setPanoId(panoId, loc);
+            });
+            marker.setPosition(loc);
+        }
+ 
+        $(function () {
+            var mapArea = document.getElementById('map');
+            var roadviewArea = document.getElementById('roadview');
+ 
+            navigator.geolocation.getCurrentPosition(function (l) {
+                var curPos = new kakao.maps.LatLng(l.coords.latitude, l.coords.longitude);
+                map = new kakao.maps.Map(mapArea, { center: curPos, level: 3 });
+                roadview = new kakao.maps.Roadview(roadviewArea);
+                marker = new kakao.maps.Marker({ map: map, position: curPos });
+ 
+                moveMap(l.coords.latitude, l.coords.longitude);
+            });
+ 
+            $("#search1").keyup(function (e) {
+                var search1Txt = $(this).val();
+                $.ajax({
+                    url: "https://dapi.kakao.com/v2/local/search/address.json",
+                    data: { "query": search1Txt },
+                    beforeSend: function (req) {
+                        req.setRequestHeader("Authorization", "KakaoAK d01dd6d0a3482a9000a7bc8fe55eeb6e");
+                    },
+                    success: function (search1Result) {
+                        moveMap(search1Result.documents[0].y, search1Result.documents[0].x);
+                    }
+                });
+            });
+ 
+            $("#search2").keyup(function (e) {
+                var search2Txt = $(this).val();
+                $.ajax({
+                    url: "https://dapi.kakao.com/v2/local/search/keyword.json",
+                    data: { "query": search2Txt, "x": map.getCenter().getLng(), "y": map.getCenter().getLat(), "radius": 500 },
+                    beforeSend: function (req) {
+                        req.setRequestHeader("Authorization", "KakaoAK d01dd6d0a3482a9000a7bc8fe55eeb6e");
+                    },
+                    success: function (search2Result) {
+                        $("#resultTbl").empty();
+                        $.each(search2Result.documents, function (i, l) {
+                            var br1 = $("<br>");
+                            var br2 = $("<br>");
+                            var td = $("<td></td>").append(l.place_name, br1, l.road_address_name, br2, l.phone);
+                            var tr = $("<tr></tr>").attr("onclick", "moveMap(" + l.y + "," + l.x + ")").append(td);
+                            $("#resultTbl").append(tr);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+ 
+<body>
+    <table>
+        <tr>
+            <td>
+                <div id="map"></div>
+            </td>
+            <td>
+                <div id="roadview"></div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <input id="search1">
+            </td>
+            <td>
+                <input id="search2">
+            </td>
+        </tr>
+    </table>
+    <table id="resultTbl" border="1"></table>
+</body>
+ 
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>다음 지도 API (지도 및 로드뷰 연동)</title>
+    <style>
+        /* 컨테이너는 지도의 2배 너비를 갖습니다. */
+        #wrap {
+            width: 1000px; 
+        }
+        /* 지도와 로드뷰를 같은 라인에 표시합니다. */
+        #map, #roadview {
+            float: left;
+            width: 500px;
+            height: 500px; /* 로드뷰 높이도 지도와 동일하게 500px로 설정 */
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+	    <div id="map"></div>
+	    <div id="roadview"></div>
+    </div>
+    <div style="clear:both;"></div> <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d01dd6d0a3482a9000a7bc8fe55eeb6e"></script>
+	<script>
+        // 전역 변수 선언
+        var map;
+        var marker;
+        var roadview;
+        var roadviewClient = new kakao.maps.RoadviewClient();
+        
+        // 기본 위치 (Fallback: 서울 시청)
+        var FALLBACK_LAT = 37.56682; 
+        var FALLBACK_LNG = 126.97865;
+
+
+        // 1. 초기 위치를 가져오고 지도를 생성하는 메인 함수
+        function initialize() {
+            if (navigator.geolocation) {
+                // Geolocation API를 사용하여 현재 위치를 가져옵니다.
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        var lat = position.coords.latitude;  // 위도
+                        var lng = position.coords.longitude; // 경도
+                        // 성공 시, 현재 위치로 지도 및 로드뷰 초기화
+                        createMapAndRoadview(lat, lng);
+                    },
+                    function(error) {
+                        console.error("Geolocation 실패 또는 권한 거부:", error);
+                        // 실패 시, 기본 위치(서울 시청)로 지도 및 로드뷰 초기화
+                        createMapAndRoadview(FALLBACK_LAT, FALLBACK_LNG);
+                        alert("사용자 위치 정보를 가져오는 데 실패했습니다. 기본 위치(서울 시청)로 지도를 표시합니다.");
+                    },
+                    {
+                        timeout: 3000, 
+                        enableHighAccuracy: true 
+                    }
+                );
+            } else {
+                console.error("이 브라우저는 Geolocation을 지원하지 않습니다.");
+                // 브라우저 미지원 시, 기본 위치(서울 시청)로 지도 및 로드뷰 초기화
+                createMapAndRoadview(FALLBACK_LAT, FALLBACK_LNG);
+                alert("이 브라우저에서는 위치 정보 기능을 지원하지 않아 기본 위치로 지도를 표시합니다.");
+            }
+        }
+
+        /**
+         * 주어진 좌표로 지도와 로드뷰를 생성하고 이벤트를 설정하는 함수
+         * @param {number} lat - 위도
+         * @param {number} lng - 경도
+         */
+        function createMapAndRoadview(lat, lng) {
+            var position = new kakao.maps.LatLng(lat, lng);
+
+            // 1-1. 지도 생성
+            var mapContainer = document.getElementById('map'), 
+                mapOption = {
+                    center: position, 
+                    level: 4, 
+                    mapTypeId : kakao.maps.MapTypeId.ROADMAP
+                }; 
+
+            map = new kakao.maps.Map(mapContainer, mapOption); 
+
+            // 1-2. 마커 생성 및 표시
+            marker = new kakao.maps.Marker({
+                position: position, 
+                draggable : true, 
+                map: map 
+            });
+
+            // 1-3. 로드뷰 객체 생성
+            var roadviewContainer = document.getElementById('roadview'); 
+            roadview = new kakao.maps.Roadview(roadviewContainer); 
+
+            // 2. 이벤트 리스너 등록: 지도 마커와 로드뷰 동기화 설정
+            
+            // (A) 지도 마커가 드래그될 때 로드뷰 위치 업데이트
+            kakao.maps.event.addListener(marker, 'dragend', function(mouseEvent) {
+                var newPosition = marker.getPosition();
+                toggleRoadview(newPosition);
+                map.setCenter(newPosition); 
+            });
+            
+            // (B) 지도 클릭 시 마커 및 로드뷰 위치 업데이트
+            kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+                var clickPosition = mouseEvent.latLng;
+                marker.setPosition(clickPosition);
+                toggleRoadview(clickPosition);
+                map.panTo(clickPosition); 
+            });
+            
+            // 3. 초기 로드뷰 설정
+            toggleRoadview(position);
+        }
+        
+        /**
+         * 마커 위치의 로드뷰 ID를 요청하여 로드뷰를 띄우는 함수
+         * @param {kakao.maps.LatLng} position - 마커의 위치
+         */
+        function toggleRoadview(position) {
+            roadviewClient.getNearestPanoId(position, 50, function(panoId) {
+                if (panoId) {
+                    // 로드뷰 ID가 있으면 로드뷰를 표시
+                    roadview.setPanoId(panoId, position);
+                    document.getElementById('roadview').style.display = 'block'; 
+                } else {
+                    // 로드뷰 ID가 없으면 로드뷰 감추기
+                    document.getElementById('roadview').style.display = 'none';
+                }
+            });
+        }
+
+        // 스크립트 실행 시 초기화 함수 호출
+        initialize();
+
+	</script>
+</body>
+</html>

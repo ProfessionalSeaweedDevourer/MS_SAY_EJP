@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    </head>
+    <body>
+        <div data-role="page" id="p1">
+            <div data-role="header" data-theme="b" data-position="fixed">
+                <!-- 제목 영역  -->
+                <h1> Page 1 </h1>
+            </div>
+            <div data-role="content">
+            <!-- 본문 영역 -->
+                <a href="#p2"> Page 2 </a>
+                <a href="#p2" data-role="button"> Page 2 btn </a>
+                <a href="#p2" data-role="flow"> Page 2 flow </a>
+                <hr>
+
+                    <ul data-role="listview"></ul>
+                        <li data-role="list-divider" data-filter="true"> 과일 </li>
+                        <li> <a href="#p2">사과 </a></li>
+                        <li> 오렌지 </li>
+                        <li> 망고 </li>
+                        <li> 키위 </li>
+                        <li data-role="list-divider" data-filter="true"> 채소 </li>
+                        <li> 오이 </li>
+                        <li> 호박 </li>
+                <input>
+                <button data-theme="e"> testbtn1 </button>
+            </div>
+            <div data-role="footer" data-position="fixed">
+            <!-- 하단 바 -->
+             <h2> Bottom </h2>
+            </div>
+        </div>
+
+        <!-- 이렇게 만들어 두면, 자연적으로는 2페이지로 넘어갈 수 없다. 연결을 만들어야 한다. -->
+        <div data-role="page" id="p2">
+            <div data-role="header" data-theme="b" data-position="fixed">
+                <!-- 제목 영역  -->
+                <a href="#p1" data-icon="arrow-l"> Page 1 </a>
+
+                <h1> Page 2 </h1>
+            </div>
+            <div data-role="content">
+                <input>
+                <button data-theme="e"> 등록 </button>
+                <ul data-role="listview" data-inset="true">
+                    <li> 111 </li>
+                    <li> 111 </li>
+                    <li> 111 </li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+            <!-- 하단 바 -->
+             <h2> Bottom </h2>
+            </div>
+        </div>
+
+    </body>
+</html>
