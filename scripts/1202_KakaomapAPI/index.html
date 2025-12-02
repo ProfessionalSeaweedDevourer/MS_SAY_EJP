@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>다음 지도 API (지도 및 로드뷰 연동)</title>
+    <style>
+        /* 컨테이너는 지도의 2배 너비를 갖습니다. */
+        #wrap {
+            width: 1000px; 
+        }
+        /* 지도와 로드뷰를 같은 라인에 표시합니다. */
+        #map, #roadview {
+            float: left;
+            width: 500px;
+            height: 500px; /* 로드뷰 높이도 지도와 동일하게 500px로 설정 */
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+	    <div id="map"></div>
+	    <div id="roadview"></div>
+    </div>
+    <div style="clear:both;"></div> <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d01dd6d0a3482a9000a7bc8fe55eeb6e"></script>
+	<script>
+        // 기본 위치 (서울 시청)
+        var INIT_LAT = 37.56682; 
+        var INIT_LNG = 126.97865;
+        
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(INIT_LAT, INIT_LNG), // 지도의 중심좌표
+		        level: 4, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 1. 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+		// 2. 지도에 마커를 생성하고 표시한다
+		var marker = new kakao.maps.Marker({
+		    position: new kakao.maps.LatLng(INIT_LAT, INIT_LNG), // 마커의 좌표
+		    draggable : true, // 마커를 드래그 가능하도록 설정한다
+		    map: map // 마커를 표시할 지도 객체
+		});
+
+		// 3. 로드뷰 객체 생성
+		var roadviewContainer = document.getElementById('roadview'); 
+        var roadview = new kakao.maps.Roadview(roadviewContainer); 
+        
+        // 로드뷰 위치를 찾기 위한 RoadviewClient 객체 생성
+        var roadviewClient = new kakao.maps.RoadviewClient();
+
+        // 마커 위치의 로드뷰 ID와 좌표를 요청하여 로드뷰를 띄웁니다.
+        function toggleRoadview(position) {
+            roadviewClient.getNearestPanoId(position, 50, function(panoId) {
+                if (panoId) {
+                    // 로드뷰 ID가 있으면 로드뷰를 표시
+                    roadview.setPanoId(panoId, position);
+                    roadviewContainer.style.display = 'block'; // 로드뷰 표시
+                } else {
+                    // 로드뷰 ID가 없으면 로드뷰 감추기
+                    roadviewContainer.style.display = 'none';
+                }
+            });
+        }
+        
+        // 4. 이벤트 리스너 등록: 지도 마커와 로드뷰 동기화
+        
+        // (A) 지도 마커가 드래그될 때 로드뷰 위치 업데이트
+		kakao.maps.event.addListener(marker, 'dragend', function(mouseEvent) {
+		    var position = marker.getPosition();
+            toggleRoadview(position);
+		    map.setCenter(position); // 마커가 중앙에 오도록 지도 이동 (선택 사항)
+		});
+        
+        // (B) 지도 클릭 시 마커 및 로드뷰 위치 업데이트
+        kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+            var position = mouseEvent.latLng;
+            marker.setPosition(position);
+            toggleRoadview(position);
+            map.panTo(position); // 클릭 위치로 지도 부드럽게 이동
+        });
+        
+        // (C) 로드뷰 초기 로딩 시 마커 위치로 로드뷰를 띄웁니다.
+        toggleRoadview(marker.getPosition());
+
+	</script>
+</body>
+</html>

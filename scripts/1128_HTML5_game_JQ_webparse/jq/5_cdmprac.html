@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>서울시 실시간 도시 대기 정보</title>
+    <script src="https://cdn.canvasjs.com/ga/canvasjs.min.js"></script>
+    <script src="https://cdn.canvasjs.com/ga/canvasjs.stock.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>서울시 실시간 대기 정보</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>순번</th>
+                <th>측정소명</th>
+                <th>PM10(미세먼지)</th>
+                <th>PM2.5(초미세먼지)</th>
+                <th>오존(O3)</th>
+                <th>통합대기환경등급(지수)</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        // HTML 문서가 로드된 후 스크립트가 실행되도록 합니다.
+        $(document).ready(function () {
+            $.ajax({
+                // 실제 API 엔드포인트 URL
+                url: "http://openapi.seoul.go.kr:8088/***REMOVED_SEOUL_KEY***/xml/RealtimeCityAir/1/25/",
+                // 응답 데이터 타입을 XML로 명시
+                dataType: "xml",
+
+                success: function (xmlDoc) {
+                    // 1. XML 문서 전체에서 <row> 태그를 찾아서 반복 처리합니다.
+                    $(xmlDoc).find("row").each(function (i, row) {
+                        // 2. 각 <row> 요소 내부에서 필요한 데이터를 추출합니다.
+                        // jQuery 객체인 $(row)를 사용하여 자식 태그의 텍스트를 가져옵니다.
+
+                        var pm10ar = []
+                        var pm25ar = []
+
+                        var guName = $(row).find("MSRSTN_NM").text(); // 측정소명 (예: 중구)
+                        var dustPM10 = $(row).find("PM").text();         // 미세먼지 (PM10)
+                        var dustPM25 = $(row).find("FPM").text();        // 초미세먼지 (PM2.5)
+                        var ozone = $(row).find("OZON").text();          // 오존
+                        var grade = $(row).find("CAI_GRD").text();       // 통합대기환경등급 (예: 좋음, 보통)
+                        var csi = $(row).find("CAI_IDX").text();         // 통합대기환경지수
+
+                        pm10ar[i] = { y: dustPM10, label: mn }
+                        pm25ar[i] = { y: dustPM25, label: mn }
+
+                        // 데이터가 비어있지 않은 경우에만 테이블에 추가 (금천구처럼 데이터가 없는 경우 제외)
+                        if (guName && grade) {
+                            // 3. 테이블에 삽입할 새로운 행(<tr>)을 생성합니다.
+                            var newRow = '<tr>' +
+                                '<td>' + (i + 1) + '</td>' + // 순번 (0부터 시작하므로 +1)
+                                '<td>' + guName + '</td>' +
+                                '<td>' + dustPM10 + '</td>' +
+                                '<td>' + dustPM25 + '</td>' +
+                                '<td>' + ozone + '</td>' +
+                                '<td>' + grade + ' (' + csi + ')</td>' +
+                                '</tr>';
+
+                            // 4. HTML 문서 내의 <table> 요소에 새로운 행을 추가합니다.
+                            $("table").append(newRow);
+                        }
+                    });
+
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
+                    // 요청 실패 시 사용자에게 알림
+                    alert("데이터 로드 중 오류가 발생했습니다: " + textStatus + " (" + errorThrown + ")");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

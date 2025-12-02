@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Naver Shopping </title>
+
+        <script src="jQuery.js"></script>
+        <script src="https://cdn.canvasjs.com/ga/canvasjs.min.js"></script>
+        <script src="https://cdn.canvasjs.com/ga/canvasjs.stock.min.js"></script>
+
+        <script>
+
+            $(function (){
+                $("button").click(function (){
+                    $.ajax({ // url: 요청 패러미터 전까지, data: json 쌍, beforeSend: function(){}, success: function(내용){}
+                        url: "http://localhost:8000/naver.shopping.get",
+                        data: {"q": $("input").val() },
+                        success: function (xmlll){
+                            alert(xmlll)
+                        }
+                    })
+                })
+            })
+
+        </script>
+
+    </head>
+
+    <body>
+        <button> !!! </button>
+    </body>
+
+</html>

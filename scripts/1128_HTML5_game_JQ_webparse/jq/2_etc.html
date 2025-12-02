@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 기타 이벤트 </title>
+        <script src="jQuery.js"></script>
+
+        <script>
+
+            $(function(){
+                // 1. Select 요소의 값이 변경될 때 발생하는 change 이벤트 처리
+                $("select").change(function(){
+                    // 현재 선택된 option의 텍스트 값을 가져옵니다.
+                    var selectedText = $(this).val(); 
+                    
+                    // 선택된 값이 '직접 입력'일 경우, 새로운 입력 필드를 표시합니다.
+                    if (selectedText === "직접 입력"){
+                        // 기존의 입력 영역을 비웁니다.
+                        $("#domain_input_area").empty();
+                        
+                        // 새로운 input 요소를 생성하고, id를 지정합니다.
+                        var customInput = $("<input>").attr("id", "custom_domain_input").attr("type", "text");
+                        
+                        // 생성된 input 요소를 영역에 추가합니다.
+                        $("#domain_input_area").append(customInput);
+                    } else {
+                        // '직접 입력'이 아닐 경우, 영역을 비워 input 필드를 제거합니다.
+                        $("#domain_input_area").empty();
+                        alert(selectedText); // 기존 alert 유지
+                    }
+                });
+                
+
+                // 2. '가입' 버튼 클릭 이벤트 처리
+                $("#regtbrn").click(function(){
+                    var account = $("#email_acc").val();
+                    var corp = $("#email_corp").val();
+                    var fullEmail = "";
+
+                    if (corp === "직접 입력") {
+                        // '직접 입력'일 경우, 생성된 input 필드의 값을 사용
+                        var customDomain = $("#custom_domain_input").val();
+                        fullEmail = account + "@" + customDomain;
+                    } else {
+                        // 일반 선택일 경우, select의 값을 사용
+                        fullEmail = account + "@" + corp;
+                    }
+                    
+                    alert("가입 이메일: " + fullEmail);
+                })
+
+                $(window).resize(function (){
+                    var w = $(window).width();
+                    var h = $(window).height();
+                    $("h1").text(w + ", " + h);
+                })
+
+                // document: 이 html 문서
+                // window: 브라우저의 front-end
+                // navigator: 브라우저의 back-end
+                alert(navigator.userAgent);
+
+                // $(window).scroll(function(){
+                //     alert("A")
+                // })
+
+            })
+
+            
+        
+        </script>
+    </head>
+    <body>
+
+        Email: 
+        <input id = "email_acc"> @ 
+        <select id = "email_corp">
+            <option value="gmail.com">gmail.com</option>
+            <option value="naver.com">naver.com</option>
+            <option value="직접 입력">직접 입력</option>
+        </select>
+        
+                <div id="domain_input_area"></div>
+
+        <button id = "regtbrn"> 가입 </button>
+        <hr>
+        <h1> </h1>
+
+        aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>
+        aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>aaa<br>
+
+    </body>
+</html>
