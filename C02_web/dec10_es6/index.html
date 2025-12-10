@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script>
+            var a = 10;
+            function test() {
+                alert(a);
+                // a = 20;
+                var a = 20; // 이 a를 우선시, 기존 a 무시됨
+                alert(a); // 20
+            }
+            test();
+
+            navigator.geolocation.getCurrentPosition(function (d) {
+                alert(d.coords.latitude);
+                alert(d.coords.longitude);
+            });
+
+            // JS의 콜백함수 시스템: 함수명을 적지 않아도 함수를 만들고 쓸 수 있음
+            // ES6: Arrow Function
+            // 이제는 function도 안 써도 됨
+
+            navigator.geolocation.getCurrentPosition((d) => {
+                alert(d.coords.latitude);
+                alert(d.coords.longitude);
+            }); // anfn: Annonymous Function
+
+            // 화살표 함수 연습: 일반함수의 화살표함수화 + 변수에 함수 저장
+            function printSum(A,B){
+                alert(A+B);
+            };
+            printSum(1,3);
+
+            let sumMaker = (e, f) => {
+                alert(e+f);
+            };
+            sumMaker(1,3); // 기능적으로 같다.
+
+            const printSum = (e,f) => { // 기본적으로 변수 선언은 const를 쓰되, 루프나 값 변화가 필요한 변수만 let으로.
+                alert(e+f);
+            };
+
+            const getHab = (g,h) => g+h; // 이게무슨
+            let i = getHab(11,22);
+            alert(i);
+
+            // var 변수는 전역 변수라 안 씀.
+
+        </script>
+    </head>
+    <body>
+        A: <input id="inputA">
+        B: <input id="inputB">
+    </body>
+</html>
