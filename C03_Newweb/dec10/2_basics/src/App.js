@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import MyH2 from './myH1';
+import MyTbl from './myTbl';
 
 // React: Meta에서 만든 JS OOP 라이브러리.
 // Virtual DOM 개념 활용: 소스가 바로 화면에 그려지지 않고, 중간에 가상 VDOM을 한 번 거침
@@ -13,6 +15,7 @@ import './App.css';
 
 function App() {
   return (
+
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -28,6 +31,10 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <MyH2 />
+      <MyTbl />
+
     </div>
   );
 }
