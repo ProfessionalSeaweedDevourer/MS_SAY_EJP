@@ -1,0 +1,18 @@
+#prodArea .txtType {
+    border: red solid 2px;
+}
+
+#prodBBSTbl {
+    background-color: brown;
+    color: white;
+    width: 150px;
+}
+
+#prodBBSTbl .dataTr {
+    background-color: white;
+    color: black;
+}
+
+#prodBBSTbal .dataTr.hover {
+    background-color: burlywood;
+}

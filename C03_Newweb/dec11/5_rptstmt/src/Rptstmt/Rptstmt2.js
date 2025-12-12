@@ -6,9 +6,7 @@ import React, { useState } from "react";
 const Rptstmt2 = () => {
     const [ar, setAr] = useState([1231, 84, 123, 93, 84]);
 
-    const h4s = ar.map((a, i) => {
-        return <h4>{a}</h4>
-    });
+    const h4s = ar.map((a, i) => <h4>{a}</h4>);
 
     return <div>{h4s}</div>;
 };
