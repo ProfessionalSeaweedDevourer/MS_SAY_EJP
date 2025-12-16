@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "nbp";
+    src: url(./NanumBarunpenR.ttf);
+}
+
+#A {
+    font-family: "nbp";
+    color: #b196de;
+}
+
+.B {
+    color: #00c2a7;
+}
