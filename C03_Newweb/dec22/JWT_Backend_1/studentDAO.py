@@ -44,3 +44,10 @@ class StudentDAO:
         except jwt.DecodeError:
             result = {"result": "JWT 없음"}
         return JSONResponse(result, headers=h)
+    
+    def update(self, encodedJWT):
+        h = {"Access-Control-Allow-Origin": "*"}
+        try:
+            result = jwt.decode(encodedJWT, self.jwtKey, self.jwtAlgorithm)
+
+            result = 

@@ -1,0 +1,9 @@
+/* index.css는 '룰북'. */
+
+a {
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+}
