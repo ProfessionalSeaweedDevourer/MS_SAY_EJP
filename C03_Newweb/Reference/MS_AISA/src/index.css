@@ -1,0 +1,31 @@
+@font-face {
+   font-family: "americano";
+   src: url("./americano.ttf");
+}
+@font-face {
+   font-family: "djdg";
+   src: url("./djdg.ttf");
+}
+a {
+   text-decoration: none;
+}
+input {
+   font-family: "djdg";
+   outline: none;
+}
+input::placeholder,textarea::placeholder {
+   font-family: "americano";
+}
+button {
+   font-family: "americano";
+   cursor: pointer;
+   outline: none;
+}
+textarea{
+   font-family: "djdg";
+   resize: none;
+   outline: none;
+}
+table{
+   border-spacing: 0px;
+}
