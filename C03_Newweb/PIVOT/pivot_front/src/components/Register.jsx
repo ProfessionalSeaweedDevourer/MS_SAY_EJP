@@ -47,8 +47,27 @@ const Register = ({ setActiveTab }) => {
       };
 
       if (response.ok) {
-        // 성공 시 Context 업데이트 및 알림
-        setUserInfo({ id: formData.id, name: formData.id, role: '', description: '' });
+        // fetch full profile then update context
+        try {
+          const profileRes = await fetch(`http://localhost:8000/users/${formData.id}`);
+          if (profileRes.ok) {
+            const profile = await profileRes.json();
+            const normalized = {
+              id: formData.id,
+              name: profile.name || formData.id,
+              role: profile.role || '',
+              description: profile.description || '',
+              profileImage: profile.profile_image_url ? `http://localhost:8000${profile.profile_image_url}` : `http://localhost:8000/users/${formData.id}/profile-image`,
+              post_count: profile.post_count || 0,
+              comment_count: profile.comment_count || 0,
+            };
+            setUserInfo(normalized);
+          } else {
+            setUserInfo({ id: formData.id, name: formData.id, role: '', description: '', profileImage: `http://localhost:8000/users/${formData.id}/profile-image` });
+          }
+        } catch {
+          setUserInfo({ id: formData.id, name: formData.id, role: '', description: '', profileImage: `http://localhost:8000/users/${formData.id}/profile-image` });
+        }
         alert(`회원가입 성공: ${data.id}님 환영합니다.`);
         if (setActiveTab) setActiveTab('Dashboard');
       } else {

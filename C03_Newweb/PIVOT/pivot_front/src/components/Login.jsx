@@ -21,14 +21,33 @@ const Login = ({ setActiveTab }) => {
       const response = await fetch('http://localhost:8000/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // 백엔드가 사용자 정보를 반환하면 그것을 사용, 아니면 최소한 id를 저장
-        setUserInfo(data || { name: formData.id, role: '', description: '' });
+        // 세션 쿠키 기반 인증; 세션이 발급되면 쿠키가 자동 저장됨
+        const id = data?.id || formData.id;
+        // fetch full profile including counts; include credentials so cookie is sent
+        const profileRes = await fetch(`http://localhost:8000/users/${id}`, { credentials: 'include' });
+        if (profileRes.ok) {
+          const profile = await profileRes.json();
+          const normalized = {
+            id,
+            name: profile.name || id,
+            role: profile.role || '',
+            description: profile.description || '',
+            profileImage: profile.profile_image_url ? `${profile.profile_image_url}` : `http://localhost:8000/users/${id}/profile-image`,
+            post_count: profile.post_count || 0,
+            comment_count: profile.comment_count || 0,
+            token: null,
+          };
+          setUserInfo(normalized);
+        } else {
+          setUserInfo({ id, name: data?.name || id, role: '', description: '', profileImage: `http://localhost:8000/users/${id}/profile-image`, token: null });
+        }
         alert(`로그인 성공: ${data?.name || formData.id}님 환영합니다.`);
         if (setActiveTab) setActiveTab('Dashboard');
       } else {

@@ -9,23 +9,30 @@ const Navbar = ({ activeTab, setActiveTab }) => {
     setActiveTab('Dashboard');
   };
 
-  const defaultMenus = ['Dashboard', 'Inventory', 'Analysis', 'Settings'];
+  // Build menus: always show Dashboard/Forum. Show Settings only when logged in,
+  // and display the user's name as the menu label that navigates to the Settings tab.
+  const menus = ['Dashboard', 'Forum'];
+  const loggedIn = Boolean(userInfo?.name);
+  if (loggedIn) menus.push(userInfo.name);
 
   return (
     <nav className="flex items-center justify-between p-6 bg-slate-900 text-white">
       <h1 className="text-2xl font-bold tracking-tighter">PIVOT</h1>
       <ul className="flex gap-8 items-center">
-        {defaultMenus.map((menu) => (
-          <li
-            key={menu}
-            className={`cursor-pointer hover:text-blue-400 transition ${activeTab === menu ? 'text-blue-500 font-semibold' : ''}`}
-            onClick={() => setActiveTab(menu)}
-          >
-            {menu}
-          </li>
-        ))}
+        {menus.map((label) => {
+          const targetTab = loggedIn && label === userInfo.name ? 'Settings' : label;
+          return (
+            <li
+              key={label}
+              className={`cursor-pointer hover:text-blue-400 transition ${activeTab === targetTab ? 'text-blue-500 font-semibold' : ''}`}
+              onClick={() => setActiveTab(targetTab)}
+            >
+              {label}
+            </li>
+          );
+        })}
 
-        {!userInfo?.name ? (
+        {!loggedIn ? (
           // Not logged in: show Login/Register
           <>
             <li
@@ -42,9 +49,8 @@ const Navbar = ({ activeTab, setActiveTab }) => {
             </li>
           </>
         ) : (
-          // Logged in: show user name and Logout
+          // Logged in: show Logout
           <>
-            <li className="text-slate-300">{userInfo.name}</li>
             <li
               className="cursor-pointer hover:text-blue-400 transition"
               onClick={handleLogout}

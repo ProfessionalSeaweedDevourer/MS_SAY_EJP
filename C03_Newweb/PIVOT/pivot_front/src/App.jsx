@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import Settings from './components/Settings';
 import Register from './components/Register';
 import Login from './components/Login';
+import Forum from './components/Forum';
 
 function App() {
   const [activeTab, setActiveTab] = useState('Dashboard');
@@ -12,6 +13,7 @@ function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'Dashboard': return <Dashboard />;
+      case 'Forum': return <Forum />;
       case 'Settings': return <Settings />;
       case 'Login': return <Login setActiveTab={setActiveTab} />;
       case 'Register': return <Register setActiveTab={setActiveTab} />;

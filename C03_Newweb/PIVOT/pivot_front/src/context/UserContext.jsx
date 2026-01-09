@@ -8,7 +8,11 @@ export const UserProvider = ({ children }) => {
     id: '',
     name: '',
     role: '',
-    description: ''
+    description: '',
+    // optional: data URL or image URL for profile picture
+    profileImage: '',
+    post_count: 0,
+    comment_count: 0,
   });
 
   return (

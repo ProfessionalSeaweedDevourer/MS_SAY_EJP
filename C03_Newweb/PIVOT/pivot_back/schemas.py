@@ -38,6 +38,10 @@ class LoginResponse(BaseModel):
     address: Optional[str] = None
     role: Optional[str] = None
     description: Optional[str] = None
+    profile_image_url: Optional[str] = None
+    post_count: Optional[int] = 0
+    comment_count: Optional[int] = 0
+    token: Optional[str] = None
 
     class Config:
         from_attributes = True
@@ -48,6 +52,34 @@ class UserUpdate(BaseModel):
     name: Optional[str] = None
     role: Optional[str] = None
     description: Optional[str] = None
+
+    class Config:
+        from_attributes = True
+
+
+# Forum schemas
+class PostCreate(BaseModel):
+    content: str
+
+
+class CommentCreate(BaseModel):
+    content: str
+
+
+class CommentResponse(BaseModel):
+    id: str
+    post_id: str
+    author_id: str
+    content: str
+    created_at: str
+
+
+class PostResponse(BaseModel):
+    id: str
+    author_id: str
+    content: str
+    created_at: str
+    comments: list[CommentResponse] = []
 
     class Config:
         from_attributes = True
