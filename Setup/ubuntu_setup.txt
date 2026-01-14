@@ -1,5 +1,3 @@
-eric / hijgyz-fuCqu9-haqsir
-
 [(1) nettools & openssh (로컬)]
 sudo apt install net-tools && sudo apt install openssh-server
 
