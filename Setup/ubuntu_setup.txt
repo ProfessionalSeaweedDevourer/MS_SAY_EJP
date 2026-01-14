@@ -1,0 +1,135 @@
+eric / hijgyz-fuCqu9-haqsir
+
+[(1) nettools & openssh (로컬)]
+sudo apt install net-tools && sudo apt install openssh-server
+
+[(2) vi, ftp 설정 (원격)] * PuTTY에 붙여넣기 하는 법: 우클릭
+sudo apt remove vim-tiny && sudo apt install vim & sudo apt install vsftpd
+
+sudo vi /etc/vsftpd.conf
+
+vi상에서 /write 검색 > a > #write_enable에서 # 제거, esc > :wq 로 저장 후 종료
+
+[(3) Java 설치]
+sudo add-apt-repository ppa:openjdk-r/ppa && sudo apt update && sudo apt install openjdk-17-jdk
+
+java -version
+
+[(4) tomcat 설치]
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.113/bin/apache-tomcat-9.0.113.tar.gz
+
+tar xvzf apache-tomcat-9.0.113.tar.gz
+
+rm -rf apache-tomcat-9.0.113.tar.gz
+
+cd apache-tomcat-9.0.113
+
+vi conf/server.xml
+
+vi상에서 /20000 검색 > 포트번호 8888 등으로 수정 후 esc > :wq
+
+[(5) tomcat 구동]
+bin/startup.sh : 켜기
+bin/shutdown.sh : 끄기
+
+Windows 측에서 http://서버:포트 로 접속 테스트
+
+FileZilla로 apache-tomcat-9.0.113/webapps/ROOT 내부에 띄우고 싶은 내용물 전송
+
+[(6) React 앱 빌드 및 배포]
+프로젝트 디렉토리 내에서 yarn build 후 생성된 dist 내용물을 위 디렉토리로 전송
+
+[(7) FastAPI 설치]
+<python 3.9 설치 환경설정 진행> 
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev curl software-properties-common
+
+sudo apt update
+
+<설치 파일 다운로드>
+cd ~
+
+wget https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tar.xz
+
+tar xvf Python-3.9.13.tar.xz
+
+rm -rf Python-3.9.13.tar.xz
+
+cd Python-3.9.13
+
+<설치 진행>
+./configure --enable-optimizations
+
+make -j 12
+
+sudo make altinstall
+
+<설치 확인>
+python3.9
+
+실행 확인하고 ctrl+d
+
+pip3.9 list
+
+<FastAPI 및 Uvicorn 설치>
+pip3.9 install fastapi && pip3.9 install uvicorn[standard]
+
+<실행>
+cd ~ && cd Prac && cd Jan13
+vi faTest.py > 적당히 빌드
+python3.9 -m uvicorn faTest:app --reload --host=0.0.0.0 --port=9999
+
+[(8) PuTTY 종료해도 계속 돌아가도록 백그라운드로 실행하기]
+nohup python3.9 -m uvicorn faTest:app --reload --host=0.0.0. --port=9999 &
+
+> 를 끄는 법: 프로세스 관리자 띄우기 (경로 무관)
+ps -ef
+
+그런데 이렇게 하면 관련 없는 프로세스도 한꺼번에 뜨기 때문에, 추가 입력으로 특정 프로세스 검색 가능
+
+ps -ef|grep python3.9
+
+프로세스 목록에서, 앞 번호가 해당 프로세스의 번호, 뒤 번호는 해당 프로세스의 부모 프로세스 번호.
+
+kill -9 번호
+(외우기 쉬운 킬구)
+
+[(9) Node.js]
+<구버전 설치파일 주소 등록>
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+
+<설치 환경 세팅>
+. ~/.nvm/nvm.sh
+
+<설치 진행>
+nvm install 9.0.0
+
+<라이브러리 설치>
+npm install nodemon -g 
+> 그런데 서버는 사실 소스를 직접 수정할 일도 별로 없고 백그라운드에서 실행할 거라 굳이 설치할 필요는 잘 없음
+
+npm install express -g && npm express-generator@4 -g && npm install forever -g
+> forever -g: 백그라운드 실행 시스템
+ 
+<샘플 프로젝트 생성 및 실행>
+express NodeJSTest && cd NodeJSTest
+
+npm install
+
+vi app.js
+> app.use('/', indexRouter); 및 그 아래 줄을 주석처리하고, 그 위에 다음 내용 추가 후 저장.
+ 
+app.listen(7777);
+app.get("/c.d", (req, res) => {
+        res.send("접속성공");
+});
+
+> :wq
+
+node app.js
+
+> 구동 후 http://서버주소:7777/c.d 접속 테스트
+
+ctrl + C
+
+<백그라운드 실행>
+forever start app.js
