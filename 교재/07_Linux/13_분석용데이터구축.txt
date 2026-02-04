@@ -1,0 +1,20 @@
+pymongo설치
+  sudo pip3 install pymongo==3.9
+
+cx_Oracle설치
+  sudo pip3 install cx_Oracle==7
+
+  sudo apt-get install libaio1
+
+  wget 그것들
+
+  환경변수설정
+      sudo mkdir /opt/oracle
+      sudo mv instantclient_21_7 /opt/oracle
+      sudo sh -c "echo /opt/oracle/instantclient_21_7 > /etc/ld.so.conf.d/oracle-instantclient.conf"
+      sudo ldconfig
+
+      sudo vi ~/.bashrc
+         export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_7:$LD_LIBRARY_PATH
+         export PATH=/opt/oracle/instantclient_21_7:$PATH
+      source ~/.bashrc

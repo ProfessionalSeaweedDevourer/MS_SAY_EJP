@@ -1,0 +1,11 @@
+ssh 설치
+	sudo apt-get install openssh-server
+
+IP주소 확인
+	관련 툴 설치
+		sudo apt-get install net-tools
+
+	IP주소 확인
+		ifconfig
+
+윈도우즈에서 PuTTY로 접속

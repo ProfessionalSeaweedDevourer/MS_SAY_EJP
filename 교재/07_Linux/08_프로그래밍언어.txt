@@ -1,0 +1,42 @@
+Oracle JDK------------------------------------------------
+apt-get 저장소 추가
+	sudo add-apt-repository ppa:webupd8team/java
+	sudo apt-get update
+
+JDK 설치
+	sudo apt-get install oracle-java8-installer
+	
+Open JDK---------------------------------------------------
+apt-get 저장소 추가
+	sudo add-apt-repository ppa:openjdk-r/ppa	
+	sudo apt-get update
+JDK 설치
+	sudo apt-get install openjdk-8-jdk
+C---------------------------------------------------
+GCC 설치
+	sudo apt-get install build-essential
+
+소스 작성
+	vi Hello.c
+
+소스
+	#include <stdio.h>
+	
+	int main(){
+		printf("Hello, World!\n");
+		
+		return 0;
+	}
+
+컴파일
+	gcc -o 파일명 소스파일명
+	gcc -o Hello Hello.c
+
+실행
+	./파일명
+	./Hello
+Python----------------------------------------------
+은 기본 설치 되어있음
+	GUI Editor(IDLE)를 원하면
+		sudo apt-get install idle
+		후 idle로 실행(ssh상태로 말고)

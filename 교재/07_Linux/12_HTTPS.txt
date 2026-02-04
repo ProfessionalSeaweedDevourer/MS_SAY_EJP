@@ -1,0 +1,14 @@
+sudo /etc/init.d/tomcat8 stop
+sudo apt-get install certbot
+sudo certbot certonly --standalone -d sdgn-djvemfu.tplinkdns.com
+sudo cp /etc/letsencrypt/live/sdgn-djvemfu.tplinkdns.com/{cert,chain,privkey}.pem /var/lib/tomcat8/conf/
+sudo vi /var/lib/tomcat8/conf/server.xml
+
+<Connector port="443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               maxThreads="150" SSLEnabled="true">
+        <SSLHostConfig>
+                <Certificate certificateFile="conf/cert.pem"
+                        certificateKeyFile="conf/privkey.pem"
+                        certificateChainFile="conf/chain.pem" />
+        </SSLHostConfig>
+</Connector>

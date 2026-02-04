@@ -1,0 +1,24 @@
+설치
+	sudo apt-get install tomcat8
+	sudo apt-get install tomcat8-admin
+
+설정
+	sudo vi /etc/default/tomcat8
+		JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386
+		AUTHBIND=yes
+
+80번 포트 사용 가능하게
+	cd /etc/authbind/byport/
+	sudo touch 80
+	sudo chown tomcat8 80
+	sudo chmod 744 80
+
+	sudo vi /var/lib/tomcat8/conf/server.xml
+		포트 80으로
+서비스 시작
+	sudo /etc/init.d/tomcat8 start
+
+작업한거 올리고 권한변경
+	sudo chmod 744 index.html
+	sudo rm -rf /var/lib/tomcat8/webapps/ROOT/*
+	sudo cp index.html /var/lib/tomcat8/webapps/ROOT

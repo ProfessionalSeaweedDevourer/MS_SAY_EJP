@@ -1,0 +1,28 @@
+웹에서 다운받기
+	wget 주소
+	wget http://apache.tt.co.kr/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz
+
+아카이브 & 압축
+	아카이브 : 파일 여러개를 묶음
+	압축 : 파일 사이즈를 줄임
+
+	tar [옵션] [대상 파일]
+		c : tar생성(아카이브 하기)		
+		f [파일명]: 아카이브 파일명 지정
+		v : 처리하면서 정보 출력
+		z : gzip으로 압축
+		j : bzip2로 압축
+		x : 원래대로(아카이브 풀기)
+		-C [위치] : 압축 풀 위치
+			
+	압축하기
+		tar cvzf test.tar.gz LinuxTest
+	
+	압축풀기
+		tar xvzf test.tar.gz -C LinuxTest
+
+	zip압축
+		zip -r [zip파일명] [대상]
+
+	zip압축해제
+		unzip [zip파일명] [대상] -D [압축풀위치]
