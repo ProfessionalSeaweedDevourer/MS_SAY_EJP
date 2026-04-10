@@ -1,0 +1,50 @@
+#signUpFormTbl {
+   width: 520px;
+   font-family: "americano";
+   font-size: 12pt;
+}
+#signUpFormTbl td {
+   padding: 5px;
+}
+#signUpFormTbl .txtTypeInput {
+   width: 500px;
+   height: 30px;
+   border: white solid 3px;
+   background-color: #ffffff77;
+   font-size: 12pt;
+   color: white;
+   padding: 5px;
+}
+#signUpFormTbl input::placeholder {
+   color: #ffffffaa;
+}
+.jumin1Input{
+    width: 150px;
+    height: 30px;
+    border: none;
+    font-size: 12pt;
+    background-color: transparent;
+    text-align: center;
+    color:white;
+}
+.jumin2Input{
+    width: 50px;
+    height: 30px;
+    border: none;
+    font-size: 12pt;
+    background-color: transparent;
+    text-align: center;
+    color:white;
+}
+#signUpFormTbl button{
+    border: none;
+    background-color: transparent;
+    font-size: 15pt;
+    font-weight: 900;
+    width: 200px;
+    height: 40px;
+    color: white;
+}
+#signUpFormTbl img{
+   max-width: 50%;
+}

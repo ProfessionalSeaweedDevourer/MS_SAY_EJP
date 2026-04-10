@@ -1,0 +1,8 @@
+driver.selector.orderBy=score
+eclipse.preferences.version=1
+org.jkiss.dbeaver.core.confirm.exit=always
+sample.database.canceled=true
+swt.client.browser=EDGE
+tipOfTheDayInitializer.notFirstRun=true
+ui.auto.update.check.time=1768532232454
+ui.show.tip.of.the.day.on.startup=false
