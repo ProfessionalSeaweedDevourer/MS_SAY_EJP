@@ -1,11 +1,10 @@
 import os
 from openai import AzureOpenAI
 
-# 1. 엔드포인트 끝에 / 가 붙어있는지, 오타가 없는지 확인
-endpoint = "***REDACTED_AZURE_OPENAI_ENDPOINT***"
-deployment = "gpt-4.1"  # 이미지의 '이름' 항목
-subscription_key = "***REDACTED_AZURE_OPENAI_KEY***"
-api_version = "2024-02-15-preview"  # 안정적인 버전으로 교체
+endpoint = os.environ["AZURE_OPENAI_ENDPOINT"]
+deployment = os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4.1")
+subscription_key = os.environ["AZURE_OPENAI_KEY"]
+api_version = os.environ.get("AZURE_OPENAI_API_VERSION", "2024-02-15-preview")
 
 client = AzureOpenAI(
     api_version=api_version,

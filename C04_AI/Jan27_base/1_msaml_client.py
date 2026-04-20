@@ -10,22 +10,18 @@
 #   - azureml-inference-server-http
 #   - inference-schema
 
+import os
 import urllib.request
 import json
 
-# Request data goes here
-# The example below assumes JSON formatting which may be updated
-# depending on the format your endpoint expects.
-# More information can be found here:
-# https://docs.microsoft.com/azure/machine-learning/how-to-deploy-advanced-entry-script
 data = {
     "input_data": {"columns": ["fight", "yok"], "index": [0], "data": [[80, 20]]},
 }
 
 body = str.encode(json.dumps(data))
 
-url = "***REDACTED_AZURE_ML_ENDPOINT***"
-api_key = "***REDACTED_AZURE_ML_KEY***"
+url = os.environ["AZURE_ML_ENDPOINT"]
+api_key = os.environ["AZURE_ML_KEY"]
 if not api_key:
     raise Exception("A key should be provided to invoke the endpoint")
 
