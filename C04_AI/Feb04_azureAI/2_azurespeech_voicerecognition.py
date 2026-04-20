@@ -1,9 +1,11 @@
+import os
+
 from azure.cognitiveservices.speech import SpeechConfig, SpeechRecognizer, ResultReason, SpeechSynthesizer
 from azure.cognitiveservices.speech.audio import AudioConfig, AudioOutputConfig
 
 sc = SpeechConfig(
-    subscription="***REDACTED_AZURE_KEY***",
-    region="eastus2"
+    subscription=os.environ.get("AZURE_SPEECH_KEY"),
+    region=os.environ.get("AZURE_SPEECH_REGION", "eastus2")
 )
 
 aoc = AudioOutputConfig(True)

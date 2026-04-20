@@ -1,9 +1,11 @@
+import os
+
 from azure.ai.translation.text import TextTranslationClient, TranslatorCredential
 from azure.ai.translation.text.models import InputTextItem
 
-key = "***REDACTED_AZURE_KEY***"
-endpoint = "https://api.cognitive.microsofttranslator.com/"
-region = "eastus2"
+key = os.environ.get("AZURE_TRANSLATOR_KEY")
+endpoint = os.environ.get("AZURE_TRANSLATOR_ENDPOINT", "https://api.cognitive.microsofttranslator.com/")
+region = os.environ.get("AZURE_TRANSLATOR_REGION", "eastus2")
 
 tc = TranslatorCredential(key, region) # 인증 먼저
 ttc = TextTranslationClient(tc, ) # 인증 정보를 사용해 클라이언트 접속

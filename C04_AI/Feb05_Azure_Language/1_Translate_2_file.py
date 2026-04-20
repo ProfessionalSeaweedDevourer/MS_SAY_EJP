@@ -1,3 +1,4 @@
+import os
 from argparse import FileType
 from fileinput import filename
 from azure.core.credentials import AzureKeyCredential
@@ -5,8 +6,8 @@ from azure.ai.translation.document import SingleDocumentTranslationClient
 from azure.ai.translation.document.models import DocumentTranslateContent
 from pydantic import FilePath
 
-key = "***REDACTED_AZURE_KEY***"
-endpoint = "https://ejp-translator-feb05.cognitiveservices.azure.com/"
+key = os.environ.get("AZURE_TRANSLATOR_KEY")
+endpoint = os.environ.get("AZURE_TRANSLATOR_DOCUMENT_ENDPOINT")
 # region = "eastus2"
 
 sdtc = SingleDocumentTranslationClient(endpoint, AzureKeyCredential(key))

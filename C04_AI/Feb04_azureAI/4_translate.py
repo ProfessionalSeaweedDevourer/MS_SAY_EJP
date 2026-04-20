@@ -1,11 +1,13 @@
+import os
+
 from azure.cognitiveservices.speech import SpeechRecognizer, ResultReason
 from azure.cognitiveservices.speech.audio import AudioConfig
 from azure.cognitiveservices.speech.translation import SpeechTranslationConfig, TranslationRecognizer
 from pydash import result
 
 stc = SpeechTranslationConfig(
-    subscription="***REDACTED_AZURE_KEY***",
-    region="eastus2"
+    subscription=os.environ.get("AZURE_SPEECH_KEY"),
+    region=os.environ.get("AZURE_SPEECH_REGION", "eastus2")
 )
 stc.speech_recognition_language = "ko-KR"
 stc.add_target_language("en")

@@ -1,10 +1,12 @@
 # pip install azure-ai-textanalytics==5.2.0
 
+import os
+
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 
-key = "***REDACTED_AZURE_KEY***"
-endpoint = "https://ejp-lang-feb05.cognitiveservices.azure.com/"
+key = os.environ.get("AZURE_LANGUAGE_KEY")
+endpoint = os.environ.get("AZURE_LANGUAGE_ENDPOINT")
 
 tac = TextAnalyticsClient(endpoint, AzureKeyCredential(key))
 
