@@ -39,11 +39,9 @@
 
 ### 📝 저작 범위
 
-<!-- Eric: 아래 3개 블록은 본인이 직접 작성해 주세요. Claude 대필 금지. -->
-
-1. **원본 저작 (본인 작성)** — _TODO_
-2. **교재 참고 (출처 표기)** — _TODO_
-3. **강사 제공 코드** — _TODO_
+1. **원본 저작 (본인 작성)** — 본 저장소의 `C01_python/` · `C02_web/` · `C03_Newweb/` · `C04_AI/` 하위 파일은 모두 본인이 직접 작성했거나, 수업 중 진행된 실습을 따라 재타이핑한 결과물입니다.
+2. **교재 참고** — 해당 없음. 학습은 전적으로 실시간 강의에 기반했으며 별도 교재는 사용하지 않았습니다.
+3. **강사 제공 코드** — 파일 단위로 100% 제공받은 코드는 없습니다. 강의 중 시연된 스니펫·시드 수준의 참고는 본인이 재타이핑하여 `C*/` 하위에 반영했습니다.
 
 ### 🔁 재현 가이드
 
@@ -53,7 +51,7 @@
 
 ### 🔗 관련 프로젝트
 
-- **SOHOBI** — 본 과정 이후의 후속 프로젝트 _(URL 추가 예정)_
+- **SOHOBI** — 본 과정 이후의 후속 프로젝트 · [라이브 서비스](https://sohobi.net/) · [GitHub](https://github.com/ProfessionalSeaweedDevourer/SOHOBI)
 
 ### 📄 라이선스
 
@@ -96,11 +94,9 @@ A personal archive of code, notes, and projects written while completing the Mic
 
 ### 📝 Authorship Scope
 
-<!-- Eric: fill in the three blocks below yourself. Do not have Claude author them. -->
-
-1. **Original work (authored by me)** — _TODO_
-2. **Reference material (with attribution)** — _TODO_
-3. **Instructor-provided code** — _TODO_
+1. **Original work (authored by me)** — All files under `C01_python/`, `C02_web/`, `C03_Newweb/`, and `C04_AI/` were written by me — either from scratch or by re-typing the exercises carried out during class.
+2. **Reference material** — None. The course was delivered entirely as live instruction; no textbook was used.
+3. **Instructor-provided code** — No file in this repository was handed over verbatim. Snippets or seed fragments demonstrated during class were re-typed by me into the files under `C*/`.
 
 ### 🔁 Reproducing the Azure code
 
@@ -110,7 +106,7 @@ A personal archive of code, notes, and projects written while completing the Mic
 
 ### 🔗 Related Work
 
-- **SOHOBI** — follow-up project built after this program _(URL coming soon)_.
+- **SOHOBI** — follow-up project built after this program · [Live site](https://sohobi.net/) · [GitHub](https://github.com/ProfessionalSeaweedDevourer/SOHOBI).
 
 ### 📄 License
 

@@ -24,8 +24,6 @@
 
 본 모듈의 학습은 이후 Module ⑥ 의 Azure Cognitive Services 호출로 이어지며, 최종적으로 [../../assets/ai900-certificate.pdf](../../assets/ai900-certificate.pdf) (Microsoft Certified — Azure AI Fundamentals, 2026-02-12) 로 증빙됩니다.
 
-> 📌 교재 학습 노트 또는 VM/Linux 실습 스크린샷 보강 여부는 추후 결정.
-
 ---
 
 ## 🇺🇸 English
@@ -47,5 +45,3 @@ The deliverables for this module were **Azure Portal operations** (resource crea
 ### 🔗 Evidence
 
 Learning from this module flows into Module ⑥'s Azure Cognitive Services work, and is ultimately evidenced by [../../assets/ai900-certificate.pdf](../../assets/ai900-certificate.pdf) (Microsoft Certified — Azure AI Fundamentals, 2026-02-12).
-
-> 📌 Whether to supplement with textbook notes or VM/Linux screenshots is a decision for a later pass.

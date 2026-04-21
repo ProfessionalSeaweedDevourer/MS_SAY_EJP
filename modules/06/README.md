@@ -63,7 +63,7 @@ The final stretch of the program. This module uses **Azure OpenAI (GPT / DALL·E
 
 ### ⭐ Highlight
 
-**Azure AI Integration Suite** — the entire module is the deliverable. It includes a composite flow chaining multiple Cognitive Services (OCR → translation → summarization → sentiment analysis).
+**Azure AI Integration Suite** — the entire module is the deliverable. It includes a composite flow chaining multiple Cognitive Services (OCR → translation → summarization → sentiment analysis). Per-service resource provisioning, environment variables, execution order, and expected output are documented in [../../C04_AI/README.md](../../C04_AI/README.md).
 
 ### 🔁 Reproduction Notes (Important)
 
