@@ -9,7 +9,8 @@ from oracledb import connect
 # 1. API 통신 및 resBody 획득
 host = "openapi.seoul.go.kr"
 port = 8088
-url_path = "/***REMOVED_SEOUL_KEY***/xml/RealtimeCityAir/1/25/" 
+SEOUL_API_KEY = os.getenv("SEOUL_API_KEY", "")
+url_path = f"/{SEOUL_API_KEY}/xml/RealtimeCityAir/1/25/"
 resBody = None
 
 try:

@@ -7,25 +7,24 @@ import oracledb
 from oracledb import connect
 from json import loads
 
+OWM_API_KEY = os.getenv("OWM_API_KEY", "")
+
 hc = HTTPSConnection("api.openweathermap.org")
 hc.request(
     "GET",
-    "/data/2.5/weather?q=seoul&appid=***REMOVED_OWM_KEY***&units=metric&lang=kr",
+    f"/data/2.5/weather?q=seoul&appid={OWM_API_KEY}&units=metric&lang=kr",
 )
- 
+
 # https://openweathermap.org/
-# api key = ***REMOVED_OWM_KEY***
-# https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=***REMOVED_OWM_KEY***
- 
 # JSON(JavaScript Object Notation)
- 
+
 from http.client import HTTPSConnection
 import json
- 
+
 hc = HTTPSConnection("api.openweathermap.org")
 hc.request(
     "GET",
-    "/data/2.5/weather?q=seoul&appid=***REMOVED_OWM_KEY***&units=metric&lang=kr",
+    f"/data/2.5/weather?q=seoul&appid={OWM_API_KEY}&units=metric&lang=kr",
 )
 res = hc.getresponse()
 resBody = res.read()

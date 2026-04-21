@@ -102,12 +102,14 @@ CREATE TABLE 회사 (
 
 권장 형식: `사용자명/비밀번호@호스트:1521/서비스명`. 예: `hr/hrpwd@localhost:1521/XEPDB1`.
 
-#### 4. API 키 교체 (필수)
+#### 4. API 키 설정 (필수)
 
-- `SeoulAirQuality_Parser.py` · `AirQualityDB.py` 의 URL 경로(`/<인증키>/xml/RealtimeCityAir/1/25/`) 에 하드코딩된 서울시 인증키를 본인 키로 교체
-- `OWM_Parser.py` 의 `appid=...` 쿼리스트링 값을 본인 OpenWeatherMap 키로 교체
+각 파일은 환경변수에서 키를 읽습니다. 실행 전 본인 키를 `.env` 또는 셸 환경변수로 설정하십시오.
 
-> 원본 소스에는 강의 실습 중 발급된 무료 공개 키가 그대로 남아 있습니다 (학습 기록 보존). 재현 시에는 반드시 본인 키로 교체하십시오.
+- `SEOUL_API_KEY` — [서울 열린데이터광장](https://data.seoul.go.kr/) 에서 발급. `SeoulAirQuality_Parser.py`, `AirQualityDB.py` 에서 사용
+- `OWM_API_KEY` — [OpenWeatherMap](https://home.openweathermap.org/api_keys) 에서 발급. `OWM_Parser.py` 에서 사용
+
+> 저장소 루트 `.env.example` 에 두 변수가 정의되어 있으니, `.env` 로 복사 후 값만 채워 넣으면 됩니다.
 
 #### 5. 실행
 
@@ -249,12 +251,14 @@ The source files hardcode the **classroom LAN IPs (`195.168.9.x`)** and the defa
 
 Recommended format: `user/password@host:1521/service`. Example: `hr/hrpwd@localhost:1521/XEPDB1`.
 
-#### 4. Replace API keys (required)
+#### 4. Configure API keys (required)
 
-- In `SeoulAirQuality_Parser.py` / `AirQualityDB.py`, replace the hardcoded Seoul API key in the URL path (`/<key>/xml/RealtimeCityAir/1/25/`) with your own
-- In `OWM_Parser.py`, replace the `appid=...` query-string value with your own OpenWeatherMap key
+Each script reads its key from environment variables. Set your own values in `.env` (or your shell) before running.
 
-> The source still contains the free public-tier keys issued during class (preserved for the learning record). Replace them with your own before reproducing.
+- `SEOUL_API_KEY` — issue at [Seoul Open Data Plaza](https://data.seoul.go.kr/). Used by `SeoulAirQuality_Parser.py` and `AirQualityDB.py`.
+- `OWM_API_KEY` — issue at [OpenWeatherMap](https://home.openweathermap.org/api_keys). Used by `OWM_Parser.py`.
+
+> Both variables are declared in the repo-root `.env.example`; copy it to `.env` and fill in the values.
 
 #### 5. Run
 

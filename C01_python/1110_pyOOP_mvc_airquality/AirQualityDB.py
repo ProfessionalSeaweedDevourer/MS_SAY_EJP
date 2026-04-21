@@ -1,10 +1,13 @@
 from http.client import HTTPConnection
+import os
 import xml.etree.ElementTree as ET
 from xml.etree.ElementTree import fromstring
 from oracledb import connect
 
+SEOUL_API_KEY = os.getenv("SEOUL_API_KEY", "")
+
 hc = HTTPConnection("openapi.seoul.go.kr:8088")
-hc.request("GET", "/***REMOVED_SEOUL_KEY***/xml/RealtimeCityAir/1/25/")
+hc.request("GET", f"/{SEOUL_API_KEY}/xml/RealtimeCityAir/1/25/")
 res = hc.getresponse()
 resBody = res.read()
 hc.close()
