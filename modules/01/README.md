@@ -42,7 +42,7 @@ MS AI Academy 1기 커리큘럼의 출발점. Python 언어 기초 → OOP → D
 
 ### ⭐ Highlight
 
-**Seoul Air Quality MVC** — [../../C01_python/1110_pyOOP_mvc_airquality/](../../C01_python/1110_pyOOP_mvc_airquality/) 가 본 모듈의 대표 산출물입니다. 서울시 공공 API(XML) 수집 → 파싱 → Oracle 적재 → CSV 내보내기를 MVC 구조로 구현.
+**Seoul Air Quality MVC** — [../../C01_python/1110_pyOOP_mvc_airquality/](../../C01_python/1110_pyOOP_mvc_airquality/) 가 본 모듈의 대표 산출물입니다. 서울시 공공 API(XML) 수집 → 파싱 → Oracle 적재 → CSV 내보내기를 MVC 구조로 구현. 재현 가이드(DDL · 커넥션 문자열 · API 키 교체 절차 · 예상 출력) 는 [../../C01_python/1110_pyOOP_mvc_airquality/README.md](../../C01_python/1110_pyOOP_mvc_airquality/README.md) 참고.
 
 ### 🔁 재현 주의
 
@@ -89,7 +89,7 @@ The entry point of the MS AI Academy curriculum. This module builds the shared f
 
 ### ⭐ Highlight
 
-**Seoul Air Quality MVC** — [../../C01_python/1110_pyOOP_mvc_airquality/](../../C01_python/1110_pyOOP_mvc_airquality/) is the module's flagship deliverable. Seoul public-API (XML) ingest → parse → Oracle persist → CSV export, structured as MVC.
+**Seoul Air Quality MVC** — [../../C01_python/1110_pyOOP_mvc_airquality/](../../C01_python/1110_pyOOP_mvc_airquality/) is the module's flagship deliverable. Seoul public-API (XML) ingest → parse → Oracle persist → CSV export, structured as MVC. See [../../C01_python/1110_pyOOP_mvc_airquality/README.md](../../C01_python/1110_pyOOP_mvc_airquality/README.md) for the reproduction guide (DDL · connection-string / API-key replacement · expected output).
 
 ### 🔁 Reproduction Notes
 

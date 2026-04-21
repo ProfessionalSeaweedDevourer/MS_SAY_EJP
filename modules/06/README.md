@@ -27,7 +27,7 @@
 
 ### ⭐ Highlight
 
-**Azure AI Integration Suite** — 본 모듈 전체가 대표 산출물입니다. 여러 Cognitive Services 를 조합해 OCR → 번역 → 요약 → 감성 분석까지 이어지는 통합 흐름을 구성한 실습이 포함되어 있습니다.
+**Azure AI Integration Suite** — 본 모듈 전체가 대표 산출물입니다. 여러 Cognitive Services 를 조합해 OCR → 번역 → 요약 → 감성 분석까지 이어지는 통합 흐름을 구성한 실습이 포함되어 있습니다. 서비스별 리소스 생성 순서 · 환경변수 · 실행 순서 · 예상 출력은 [../../C04_AI/README.md](../../C04_AI/README.md) 에 정리되어 있습니다.
 
 ### 🔁 재현 주의 (중요)
 
