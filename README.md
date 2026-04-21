@@ -19,14 +19,14 @@
 
 ### 🧭 학습 모듈 (6)
 
-| # | 모듈 | 주요 경로 | 상태 |
+| # | 모듈 | 상세 README | 상태 |
 |---|---|---|---|
-| ① | AI 기초 — Python · SQL · MongoDB | [C01_python/](C01_python/) (10월~11월) | ✅ |
-| ② | 데이터 수집 — 크롤링 · 공공 API | [C01_python/1103_pyWebcrawl/](C01_python/1103_pyWebcrawl/) · [C02_web/1118_css_and_pyWebcrawl/](C02_web/1118_css_and_pyWebcrawl/) 외 | ✅ |
-| ③ | 풀스택 웹 — HTML/JS · Flask/FastAPI · React | [C02_web/](C02_web/) · [C03_Newweb/](C03_Newweb/) | ✅ |
-| ④ | Azure 인프라 — VM · Linux · Cloud | 교재 학습 (코드 미공개) | ⚠️ |
-| ⑤ | AI 이론 — 통계 · KNN · CNN · RNN | [C01_python/Jan26_ML/](C01_python/) · [C04_AI/Jan27~30/](C04_AI/) | ✅ |
-| ⑥ | MS Azure AI — GPT · Vision · Speech · Translator | [C04_AI/Feb03~Feb05/](C04_AI/) | ✅ |
+| ① | AI 기초 — Python · SQL · MongoDB | [modules/01/](modules/01/) | ✅ |
+| ② | 데이터 수집 — 크롤링 · 공공 API | [modules/02/](modules/02/) | ✅ |
+| ③ | 풀스택 웹 — HTML/JS · Flask/FastAPI · React | [modules/03/](modules/03/) | ✅ |
+| ④ | Azure 인프라 — VM · Linux · Cloud | [modules/04/](modules/04/) | ⚠️ 교재 학습 |
+| ⑤ | AI 이론 — 통계 · KNN · CNN · RNN | [modules/05/](modules/05/) | ✅ |
+| ⑥ | MS Azure AI — GPT · Vision · Speech · Translator | [modules/06/](modules/06/) | ✅ |
 
 > 모듈 ④는 실습 산출물이 코드가 아닌 VM 조작·네트워크 설정 중심이라 이 저장소에는 포함되지 않았습니다.
 
@@ -76,14 +76,14 @@ A personal archive of code, notes, and projects written while completing the Mic
 
 ### 🧭 Six Learning Modules
 
-| # | Module | Primary Paths | Status |
+| # | Module | Detailed README | Status |
 |---|---|---|---|
-| ① | AI Foundations — Python · SQL · MongoDB | [C01_python/](C01_python/) (Oct–Nov) | ✅ |
-| ② | Data Ingestion — Crawling · Public APIs | [C01_python/1103_pyWebcrawl/](C01_python/1103_pyWebcrawl/), [C02_web/1118_css_and_pyWebcrawl/](C02_web/1118_css_and_pyWebcrawl/) etc. | ✅ |
-| ③ | Full-Stack Web — HTML/JS · Flask/FastAPI · React | [C02_web/](C02_web/), [C03_Newweb/](C03_Newweb/) | ✅ |
-| ④ | Azure Infrastructure — VM · Linux · Cloud | Textbook-based (no code committed) | ⚠️ |
-| ⑤ | AI Theory — Statistics · KNN · CNN · RNN | [C01_python/Jan26_ML/](C01_python/), [C04_AI/Jan27~30/](C04_AI/) | ✅ |
-| ⑥ | MS Azure AI — GPT · Vision · Speech · Translator | [C04_AI/Feb03~Feb05/](C04_AI/) | ✅ |
+| ① | AI Foundations — Python · SQL · MongoDB | [modules/01/](modules/01/) | ✅ |
+| ② | Data Ingestion — Crawling · Public APIs | [modules/02/](modules/02/) | ✅ |
+| ③ | Full-Stack Web — HTML/JS · Flask/FastAPI · React | [modules/03/](modules/03/) | ✅ |
+| ④ | Azure Infrastructure — VM · Linux · Cloud | [modules/04/](modules/04/) | ⚠️ Textbook-based |
+| ⑤ | AI Theory — Statistics · KNN · CNN · RNN | [modules/05/](modules/05/) | ✅ |
+| ⑥ | MS Azure AI — GPT · Vision · Speech · Translator | [modules/06/](modules/06/) | ✅ |
 
 > Module ④ was delivered through VM operation and network-configuration exercises, so it did not produce source artifacts suitable for this repository.
 
